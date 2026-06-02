@@ -502,7 +502,7 @@ main{padding:14px 20px 60px;}
             <span class="help-dot" tabindex="0">?</span>
             <div class="tooltip">
               <strong>Copy updated JSON</strong><br>
-              Builds a complete item object from all the fields below, copies it to your clipboard, and shows it in the code box. Then open <strong>items.js</strong> in VS Code, find this problem_id, and paste over the entire {…} block. This is the permanent save.
+              Builds a complete replacement object from all the fields below and copies it to your clipboard — it also appears in the code box below. In VS Code, search for the <strong>problem_id</strong>, select the entire <strong>{…}</strong> object, and paste to replace it. Save and reload.
             </div>
           </div>
 
@@ -526,9 +526,9 @@ main{padding:14px 20px 60px;}
 
         </div>
         <div class="export-box" id="export-box">
-          <label>Updated item JSON — paste into items.js</label>
+          <label>Full item replacement — find this problem_id in items_unitX.js and replace the entire { … } object with this</label>
           <textarea id="export-ta" readonly></textarea>
-          <div class="export-note">Find the <code>problem_id</code> in <code>items.js</code> and replace the entire <code>{…}</code> object with the text above.</div>
+          <div class="export-note">In VS Code: <kbd>Ctrl+F</kbd> the <code>problem_id</code> value, select from the opening <code>{</code> to the closing <code>}</code> of that object, paste this to replace it. Save and reload.</div>
         </div>
       </div><!-- tab-edit -->
 
@@ -705,7 +705,7 @@ main{padding:14px 20px 60px;}
 <script src="items_unit1.js"></script>
 <script src="items_unit2.js"></script>
 <script src="items_unit3.js"></script>
-<script src="items_unit4.js?v=2"></script>
+<script src="items_unit4.js?v=3"></script>
 <script src="items_unit5.js"></script>
 <script src="items_unit6.js"></script>
 <script src="items_unit7.js"></script>

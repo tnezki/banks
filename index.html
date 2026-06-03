@@ -1,1508 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A1 Item Bank Catalog</title>
-<script>
-MathJax = {
-  tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']] },
-  startup: {
-    typeset: false,
-    ready() {
-      MathJax.startup.defaultReady();
-      MathJax.startup.promise.then(() => {
-        window._mjReady = true;
-        window.dispatchEvent(new Event('mathjax-ready'));
-      });
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assessment Banks</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:   #1a2744;
+      --gold:   #c9a84c;
+      --cream:  #f5f0e8;
+      --card-bg:#ffffff;
+      --border: #d4c9b0;
+      --shadow: 0 2px 12px rgba(26,39,68,.10);
+      --radius: 6px;
     }
-  }
-};
-</script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --navy:#0d3060; --navy-mid:#1a4a8a; --blue:#2563eb; --blue-lt:#dbeafe;
-  --ink:#111827; --muted:#6b7280; --muted2:#9ca3af;
-  --border:#e2e8f0; --border2:#d1d5db;
-  --bg:#f0f4f8; --card:#fff;
-  --pill-bg:#eff6ff; --pill-border:#bfdbfe;
-  --gold:#d97706; --gold-lt:#fef3c7;
-  --green:#16a34a; --green-lt:#dcfce7;
-  --radius:10px;
-  --shadow:0 1px 4px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.05);
-  --hdr-h:148px;
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{background:var(--bg);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;font-size:14px;line-height:1.5;}
 
-/* ── HEADER ── */
-#hdr{position:sticky;top:0;z-index:10;background:var(--navy);color:#fff;padding:12px 20px 0;}
-#hdr-top{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
-#hdr-top h1{font-family:'Fraunces',Georgia,serif;font-size:22px;font-weight:900;letter-spacing:-.02em;color:#fff;}
-#controls{display:grid;grid-template-columns:1.6fr .9fr 1.1fr .75fr .65fr;gap:8px;padding-bottom:10px;align-items:end;}
-.field{display:flex;flex-direction:column;gap:3px;}
-.field label{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#93c5fd;}
-.field input,.field select{padding:7px 10px;border:1px solid rgba(255,255,255,.18);border-radius:7px;background:rgba(255,255,255,.1);color:#fff;font-size:13px;font-family:inherit;}
-.field input::placeholder{color:rgba(255,255,255,.45);}
-.field select option{background:#1e3a5f;color:#fff;}
-.field input:focus,.field select:focus{outline:none;background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.4);}
-#stats{display:flex;align-items:center;gap:12px;padding-bottom:11px;}
-#count-text{font-size:13px;font-weight:700;color:#93c5fd;}
-#hint{font-size:11px;color:rgba(255,255,255,.4);}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ── COL HEADER ── */
-#col-header{
-  display:grid;
-  grid-template-columns:115px minmax(280px,2fr) 200px 70px 105px 90px;
-  gap:8px;padding:6px 14px;
-  background:var(--navy-mid);
-  font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#93c5fd;
-  position:sticky;top:var(--hdr-h);z-index:9;
-  border-bottom:1px solid rgba(255,255,255,.1);
-}
+    body {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      background: var(--cream);
+      color: var(--navy);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 20px 64px;
+    }
 
-/* ── MAIN ── */
-main{padding:14px 20px 60px;}
-#list{display:flex;flex-direction:column;gap:8px;}
+    /* ── Header ── */
+    header {
+      text-align: center;
+      margin-bottom: 44px;
+    }
 
-/* ── ROWS ── */
-.row{
-  display:grid;
-  grid-template-columns:115px minmax(280px,2fr) 200px 70px 105px 90px;
-  gap:8px;align-items:stretch;
-  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
-  padding:10px 14px;box-shadow:var(--shadow);transition:border-color .12s,box-shadow .12s;
-}
-.row:hover{border-color:#93c5fd;box-shadow:0 2px 8px rgba(37,99,235,.1);}
-.cell{min-width:0;}
-.pid{font-family:'DM Mono',monospace;font-weight:500;font-size:12px;color:var(--navy);}
-.status-badge{font-size:10px;margin-top:5px;font-weight:600;padding:2px 7px;border-radius:999px;display:inline-block;}
-.status-badge.auth{background:var(--green-lt);color:var(--green);}
-.status-badge.inferred{background:var(--gold-lt);color:var(--gold);}
+    .site-label {
+      font-family: 'Source Code Pro', monospace;
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
 
-/* preview card */
-.preview-card{
-  height:185px;overflow:auto;border:1px solid var(--border2);border-radius:8px;
-  background:#fdfdfd;padding:8px;cursor:zoom-in;
-  transition:transform .1s,box-shadow .1s;scrollbar-width:thin;
-}
-.preview-card:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.1);}
-.open-hint{font-size:10px;color:var(--muted2);margin-top:4px;text-align:right;}
+    h1 {
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--navy);
+    }
 
-/* problem HTML */
-.preview-card .problem,.modal-body .problem,#view-question .problem{
-  border:1px solid #bbb;border-left:5px solid var(--navy);
-  padding:8px 11px;font-family:Georgia,'Times New Roman',serif;font-size:12px;line-height:1.4;background:#fff;font-weight:400;
-}
-#view-question .problem{font-size:15px;padding:14px 16px;line-height:1.55;}
-/* problem number h2/h3 headings */
-.preview-card .problem h2,.preview-card .problem h3,
-#view-question .problem h2,#view-question .problem h3,
-.live-preview .problem h2,.live-preview .problem h3{
-  font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:14px;margin:0 0 4px;color:var(--navy);
-}
-#view-question .problem h2,#view-question .problem h3{font-size:20px;margin-bottom:6px;}
-/* audit note — muted, smaller, not bold */
-.preview-card .audit,#view-question .audit,.live-preview .audit{
-  font-size:10px;color:var(--muted);font-style:italic;font-weight:400;margin-bottom:6px;border-left:2px solid #e2e8f0;padding-left:6px;
-}
-/* tagline pill row */
-.preview-card .tagline,#view-question .tagline,.live-preview .tagline{
-  font-size:11px;color:var(--muted);font-weight:400;margin-bottom:6px;
-}
-/* reset any inherited bold from strong inside problem paragraphs */
-.preview-card .problem p,.preview-card .problem li,
-#view-question .problem p,#view-question .problem li,
-.live-preview .problem p,.live-preview .problem li{font-weight:400;}
-.problem-number{font-weight:900;font-size:13px;margin-bottom:4px;color:var(--navy);}
-#view-question .problem-number{font-size:19px;margin-bottom:6px;}
-.workspace{display:none;}
-.preview-card img,.preview-card .figure-img{max-width:100%;height:auto;display:block;margin:4px 0;}
-#view-question img,#view-question .figure-img,#live-preview img{max-width:100%;height:auto;display:block;margin:8px 0;}
-.preview-card ol,.preview-card ul,#view-question ol,#view-question ul{margin-left:18px;}
-.preview-card table,#view-question table{border-collapse:collapse;max-width:100%;}
-.preview-card td,.preview-card th,#view-question td,#view-question th{padding:3px 5px;}
+    .rule {
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+      margin: 14px auto 0;
+      border-radius: 2px;
+    }
 
-.category{font-size:11px;font-weight:600;line-height:1.3;color:var(--navy);}
-.sec-num{font-size:22px;font-weight:900;color:var(--navy);line-height:1;font-family:'Fraunces',serif;}
-.sec-title{font-size:10px;color:var(--muted);margin-top:3px;line-height:1.3;}
-.pill{display:inline-block;padding:4px 8px;border-radius:999px;background:var(--pill-bg);border:1px solid var(--pill-border);font-size:11px;font-weight:700;color:var(--blue);white-space:nowrap;}
-.source-mono{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);word-break:break-all;}
-.note-inline{font-size:11px;color:#5a6a80;margin-top:6px;line-height:1.35;font-style:italic;}
-.resource-links{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;align-items:center;}
-.resource-label{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;}
-.resource-chip{display:inline-block;padding:3px 8px;border:1px solid #b3cde8;border-radius:999px;background:#e8f4fd;color:var(--navy-mid);text-decoration:none;font-size:11px;font-weight:700;}
-.resource-chip:hover{background:#d0e8f8;}
+    /* ── Grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 18px;
+      width: 100%;
+      max-width: 780px;
+    }
 
-/* ── MODAL ── */
-#modal{position:fixed;inset:0;display:none;z-index:20;background:rgba(10,20,40,.8);padding:24px;overflow-y:auto;}
-#modal.open{display:flex;align-items:flex-start;justify-content:center;}
-.mbox{background:#fff;max-width:1080px;width:100%;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;max-height:calc(100vh - 48px);}
-.mhead{background:var(--navy);padding:12px 16px 0;display:flex;flex-direction:column;gap:10px;}
-.mhead-top{display:flex;justify-content:space-between;align-items:center;gap:10px;}
-.mtitle{font-family:'DM Mono',monospace;font-size:12px;color:#fff;}
-#close-btn{border:none;background:rgba(255,255,255,.15);color:#fff;border-radius:7px;padding:6px 12px;font-weight:700;cursor:pointer;font-size:13px;}
-#close-btn:hover{background:rgba(255,255,255,.28);}
-.tab-bar{display:flex;gap:4px;}
-.tab{padding:7px 14px;border-radius:8px 8px 0 0;font-size:12px;font-weight:700;cursor:pointer;border:none;background:rgba(255,255,255,.12);color:rgba(255,255,255,.7);font-family:inherit;transition:background .12s;}
-.tab.active{background:#fff;color:var(--navy);}
-.tab:hover:not(.active){background:rgba(255,255,255,.2);}
-.mbody{padding:20px;overflow-y:auto;flex:1;}
-.tab-panel{display:none;}
-.tab-panel.active{display:block;}
+    /* ── Card ── */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--navy);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: inherit;
+      padding: 24px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform .18s ease, box-shadow .18s ease, border-top-color .18s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-/* source box */
-.source-box{background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:6px 20px;font-size:13px;}
-.row-item{display:flex;flex-direction:column;gap:2px;}
-.row-item.full{grid-column:1/-1;}
-.skey{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);}
-.sval{font-family:'DM Mono',monospace;font-size:12px;color:var(--navy);word-break:break-all;}
-.sval.path{background:var(--navy);color:#e2f0ff;padding:5px 9px;border-radius:6px;font-size:12px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
-.copy-btn{background:rgba(255,255,255,.15);border:none;color:#fff;border-radius:5px;padding:3px 8px;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:inherit;}
-.copy-btn:hover{background:rgba(255,255,255,.28);}
-.copy-btn.copied{background:#16a34a;}
-.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 20px;margin-top:14px;font-size:13px;}
-.meta-grid .full{grid-column:1/-1;}
-.meta-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:2px;}
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,.08) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity .18s ease;
+    }
 
-/* edit tab */
-.edit-intro{background:var(--blue-lt);border:1px solid var(--pill-border);border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:13px;color:#1e40af;line-height:1.5;}
-.edit-intro strong{font-weight:700;}
-.edit-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;margin-bottom:14px;}
-.edit-grid .full{grid-column:1/-1;}
-.edit-field{display:flex;flex-direction:column;gap:4px;}
-.edit-field label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);}
-.edit-field input[type=text],.edit-field select,.edit-field textarea{
-  width:100%;border:1px solid var(--border2);border-radius:7px;padding:8px 10px;
-  font-family:'DM Mono',monospace;font-size:12px;line-height:1.5;color:var(--ink);
-  background:#fff;resize:vertical;
-}
-.edit-field select{font-family:'DM Sans',system-ui,sans-serif;}
-.edit-field input:focus,.edit-field select:focus,.edit-field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.1);}
-#edit-html{min-height:180px;}
-#edit-notes{min-height:60px;}
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 24px rgba(26,39,68,.16);
+      border-top-color: var(--gold);
+    }
 
-.edit-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:4px;}
-.btn{padding:9px 16px;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .12s,transform .08s;}
-.btn:active{transform:scale(.97);}
-.btn-primary{background:var(--navy);color:#fff;}
-.btn-primary:hover{background:var(--blue);}
-.btn-green{background:var(--green);color:#fff;}
-.btn-green:hover{background:#15803d;}
-.btn-ghost{background:transparent;border:1px solid var(--border2);color:var(--ink);}
-.btn-ghost:hover{background:var(--bg);}
+    .card:hover::after { opacity: 1; }
 
-.export-box{margin-top:14px;background:#0f172a;border-radius:8px;padding:12px 14px;display:none;}
-.export-box label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#64748b;display:block;margin-bottom:6px;}
-.export-box textarea{width:100%;background:#0f172a;color:#86efac;font-family:'DM Mono',monospace;font-size:11px;border:none;resize:vertical;min-height:120px;outline:none;line-height:1.5;}
-.export-note{font-size:12px;color:#94a3b8;margin-top:8px;line-height:1.4;}
-.export-note code{background:#1e293b;padding:1px 5px;border-radius:4px;}
+    .card-icon {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
 
-/* ── BUTTON TOOLTIPS ── */
-.btn-wrap{position:relative;display:inline-flex;align-items:center;gap:5px;}
-.help-dot{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:17px;height:17px;border-radius:999px;
-  background:rgba(0,0,0,.12);border:1px solid rgba(0,0,0,.15);
-  font-size:10px;font-weight:800;color:var(--muted);
-  cursor:help;flex-shrink:0;line-height:1;
-  transition:background .12s;
-}
-.help-dot:hover{background:rgba(0,0,0,.22);color:var(--ink);}
-.tooltip{
-  display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
-  background:#1e293b;color:#e2e8f0;font-size:12px;font-weight:400;line-height:1.5;
-  padding:10px 13px;border-radius:9px;width:260px;z-index:50;
-  box-shadow:0 4px 20px rgba(0,0,0,.3);pointer-events:none;
-  font-family:'DM Sans',system-ui,sans-serif;
-}
-.tooltip::after{
-  content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
-  border:6px solid transparent;border-top-color:#1e293b;
-}
-.btn-wrap:hover .tooltip,.help-dot:focus+.tooltip{display:block;}
-.tooltip strong{color:#93c5fd;font-weight:700;}
+    .card-title {
+      font-family: 'Source Code Pro', monospace;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
 
-.preview-toggle{font-size:12px;color:var(--blue);cursor:pointer;font-weight:600;margin-top:6px;display:inline-block;}
-.live-preview{margin-top:10px;border:1px solid var(--border);border-radius:8px;padding:12px;background:#fdfdfd;display:none;min-height:60px;}
-.live-preview.visible{display:block;}
-.live-preview .problem{border:1px solid #bbb;border-left:5px solid var(--navy);padding:10px 12px;font-family:Georgia,'Times New Roman',serif;font-size:13px;line-height:1.45;background:#fff;font-weight:400;}
-.live-preview img{max-width:100%;height:auto;}
-.live-preview ol,.live-preview ul{margin-left:18px;}
+    .card-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+    }
 
-/* ── SOURCE TYPE CHECKLIST ── */
-.stype-wrap{position:relative;}
-.stype-trigger{
-  width:100%;padding:7px 10px;border:1px solid rgba(255,255,255,.18);border-radius:7px;
-  background:rgba(255,255,255,.1);color:#fff;font-size:13px;font-family:inherit;
-  cursor:pointer;text-align:left;display:flex;justify-content:space-between;align-items:center;
-}
-.stype-trigger:focus{outline:none;background:rgba(255,255,255,.18);}
-.stype-arrow{flex-shrink:0;margin-left:4px;opacity:.7;font-size:10px;}
-.stype-label-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;}
-.stype-dropdown{
-  display:none;position:absolute;top:calc(100% + 4px);left:0;min-width:100%;
-  background:#1e3a5f;border:1px solid rgba(255,255,255,.2);border-radius:8px;
-  box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:50;padding:6px;
-}
-.stype-dropdown.open{display:block;}
-.stype-option{
-  display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;
-  cursor:pointer;color:#fff;font-size:13px;transition:background .1s;white-space:nowrap;
-}
-.stype-option:hover{background:rgba(255,255,255,.12);}
-.stype-option input[type=checkbox]{accent-color:#93c5fd;width:14px;height:14px;flex-shrink:0;cursor:pointer;}
-.stype-option label{cursor:pointer;flex:1;}
-.stype-clear{font-size:11px;color:#93c5fd;padding:4px 8px;cursor:pointer;text-align:right;display:block;}
-.stype-clear:hover{text-decoration:underline;}
+    .card-arrow {
+      margin-top: auto;
+      padding-top: 10px;
+      font-family: 'Source Code Pro', monospace;
+      font-size: .75rem;
+      color: var(--border);
+      letter-spacing: .04em;
+      transition: color .18s ease;
+    }
 
-#export-btn{
-  padding:7px 14px;background:rgba(255,255,255,.15);
-  border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;
-  font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;
-  transition:background .12s;white-space:nowrap;flex-shrink:0;
-}
-#export-btn:hover{background:rgba(255,255,255,.28);}
-#export-btn:disabled{opacity:.35;cursor:default;}
+    .card:hover .card-arrow { color: var(--gold); }
 
-/* ── EXPORT MODAL ── */
-#exp-modal{position:fixed;inset:0;display:none;z-index:20;background:rgba(10,20,40,.8);padding:24px;overflow-y:auto;}
-#exp-modal.open{display:flex;align-items:flex-start;justify-content:center;}
-.expbox{background:#fff;max-width:580px;width:100%;border-radius:14px;overflow:hidden;}
-.exphead{background:var(--navy);padding:12px 16px;display:flex;justify-content:space-between;align-items:center;}
-.exphead-title{font-family:'DM Mono',monospace;font-size:13px;color:#fff;font-weight:500;}
-#exp-close-btn{border:none;background:rgba(255,255,255,.15);color:#fff;border-radius:7px;padding:6px 12px;font-weight:700;cursor:pointer;font-size:13px;}
-#exp-close-btn:hover{background:rgba(255,255,255,.28);}
-.expbody{padding:20px;display:flex;flex-direction:column;gap:14px;}
-.exp-intro{font-size:13px;color:var(--muted);line-height:1.5;}
-.exp-count-pill{display:inline-block;background:var(--blue-lt);border:1px solid var(--pill-border);border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;color:var(--blue);}
-.exp-field{display:flex;flex-direction:column;gap:4px;}
-.exp-field label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);}
-.exp-field input[type=text]{border:1px solid var(--border2);border-radius:7px;padding:8px 10px;font-family:inherit;font-size:13px;width:100%;}
-.exp-field input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.1);}
-.exp-options{display:flex;flex-direction:column;gap:8px;}
-.exp-option{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:border-color .12s,background .12s;}
-.exp-option:hover{border-color:#93c5fd;background:#f8fbff;}
-.exp-option.selected{border-color:var(--blue);background:var(--blue-lt);}
-.exp-option input[type=radio]{margin-top:3px;flex-shrink:0;accent-color:var(--blue);}
-.exp-option-text strong{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:2px;}
-.exp-option-text span{font-size:12px;color:var(--muted);}
-.exp-actions{display:flex;gap:10px;align-items:center;}
-#exp-go-btn{padding:10px 20px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;}
-#exp-go-btn:hover{background:var(--blue);}
-#exp-go-btn:disabled{opacity:.4;cursor:default;}
-#exp-status{font-size:13px;color:var(--muted);}
-#add-btn{
-  margin-left:auto;padding:7px 14px;background:rgba(255,255,255,.15);
-  border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;
-  font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;
-  transition:background .12s;white-space:nowrap;flex-shrink:0;
-}
-#add-btn:hover{background:rgba(255,255,255,.28);}
-#new-modal{position:fixed;inset:0;display:none;z-index:20;background:rgba(10,20,40,.8);padding:24px;overflow-y:auto;}
-#new-modal.open{display:flex;align-items:flex-start;justify-content:center;}
-.nmbox{background:#fff;max-width:1080px;width:100%;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;max-height:calc(100vh - 48px);}
-.nmhead{background:var(--navy);padding:12px 16px;display:flex;justify-content:space-between;align-items:center;}
-.nmhead-title{font-family:'DM Mono',monospace;font-size:13px;color:#fff;font-weight:500;}
-#new-close-btn{border:none;background:rgba(255,255,255,.15);color:#fff;border-radius:7px;padding:6px 12px;font-weight:700;cursor:pointer;font-size:13px;}
-#new-close-btn:hover{background:rgba(255,255,255,.28);}
-.nmbody{padding:20px;overflow-y:auto;flex:1;}
-.new-intro{background:var(--blue-lt);border:1px solid var(--pill-border);border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:13px;color:#1e40af;line-height:1.5;}
-.new-intro strong{font-weight:700;}
-/* image helper */
-.img-helper{background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-top:8px;}
-.img-helper-title{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:8px;}
-.img-helper-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
-.img-helper input[type=text]{flex:1;min-width:160px;border:1px solid var(--border2);border-radius:7px;padding:7px 10px;font-family:'DM Mono',monospace;font-size:12px;}
-.img-helper-btns{display:flex;gap:6px;}
-.img-insert-btn{padding:7px 12px;background:var(--navy);color:#fff;border:none;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;}
-.img-insert-btn:hover{background:var(--blue);}
-.img-insert-btn.secondary{background:#e2e8f0;color:var(--ink);}
-.img-insert-btn.secondary:hover{background:#d1d5db;}
-/* id preview */
-.id-preview{font-family:'DM Mono',monospace;font-size:12px;color:var(--navy);background:#f1f5f9;padding:5px 10px;border-radius:6px;margin-top:4px;}
-#load-more-wrap{text-align:center;margin:20px 0;}
-#load-more{padding:10px 28px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;}
-#load-more:hover{background:var(--blue);}
-#load-more:disabled{opacity:.4;cursor:default;}
-
-/* ── EMPTY ── */
-#empty{display:none;text-align:center;padding:60px 20px;color:var(--muted);}
-#empty p{font-size:16px;font-weight:600;margin-top:10px;}
-#empty small{font-size:13px;}
-
-/* ── TOAST ── */
-#toast{position:fixed;bottom:24px;right:24px;z-index:100;background:#111827;color:#fff;padding:10px 18px;border-radius:9px;font-size:13px;font-weight:600;opacity:0;transform:translateY(8px);transition:opacity .2s,transform .2s;pointer-events:none;}
-#toast.show{opacity:1;transform:translateY(0);}
-
-@media(max-width:1100px){
-  .row,#col-header{grid-template-columns:100px 1fr;}
-  #col-header>*:not(:nth-child(-n+2)){display:none;}
-  .cell.hide-sm{display:none;}
-  #controls{grid-template-columns:1fr 1fr;}
-  .source-box,.meta-grid,.edit-grid{grid-template-columns:1fr;}
-}
-</style>
+    /* ── Footer ── */
+    footer {
+      margin-top: 52px;
+      font-family: 'Source Code Pro', monospace;
+      font-size: .68rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #9a9080;
+    }
+  </style>
 </head>
 <body>
 
-<div id="hdr">
-  <div id="hdr-top">
-    <h1>Algebra 1 Item Bank</h1>
-  </div>
-  <div id="controls">
-    <div class="field"><label>Search</label><input id="q" type="search" placeholder="problem ID, source, notes…" autocomplete="off"></div>
-    <div class="field"><label>Unit</label><select id="unit-filter"></select></div>
-    <div class="field"><label>Section</label><select id="sec-filter"></select></div>
-    <div class="field"><label>Source Type</label>
-      <div class="stype-wrap">
-        <button type="button" class="stype-trigger" id="stype-trigger">
-          <span class="stype-label-text" id="stype-label">All types</span>
-          <span class="stype-arrow">▾</span>
-        </button>
-        <div class="stype-dropdown" id="stype-dropdown">
-          <span class="stype-clear" id="stype-clear">Clear all</span>
-        </div>
-      </div>
-    </div>
-    <div class="field"><label>Status</label>
-      <select id="status">
-        <option value="">All</option>
-        <option value="authoritative">Authoritative</option>
-        <option value="source_only_inferred">Inferred</option>
-      </select>
-    </div>
-  </div>
-  <div id="stats">
-    <span id="count-text">Loading…</span>
-    <span id="hint"></span>
-    <button id="add-btn">＋ New Question</button>
-    <button id="export-btn" title="Export filtered items">⬇ Export filtered</button>
-  </div>
-</div>
+  <header>
+    <p class="site-label">Manistee High School</p>
+    <h1>Assessment Banks</h1>
+    <div class="rule"></div>
+  </header>
+
+  <main class="grid">
+
+    <a href="cc1/index.html" class="card">
+      <span class="card-icon">➕</span>
+      <span class="card-title">Course</span>
+      <span class="card-name">Core Curriculum 1</span>
+      <span class="card-arrow">Open bank →</span>
+    </a>
+
+    <a href="cc2/index.html" class="card">
+      <span class="card-icon">✖️</span>
+      <span class="card-title">Course</span>
+      <span class="card-name">Core Curriculum 2</span>
+      <span class="card-arrow">Open bank →</span>
+    </a>
+
+    <a href="cc3/index.html" class="card">
+      <span class="card-icon">📊</span>
+      <span class="card-title">Course</span>
+      <span class="card-name">Core Curriculum 3</span>
+      <span class="card-arrow">Open bank →</span>
+    </a>
+
+    <a href="alg1/index.html" class="card">
+      <span class="card-icon">🔢</span>
+      <span class="card-title">Course</span>
+      <span class="card-name">Algebra 1</span>
+      <span class="card-arrow">Open bank →</span>
+    </a>
+
+    <a href="geo/index.html" class="card">
+      <span class="card-icon">📐</span>
+      <span class="card-title">Course</span>
+      <span class="card-name">Geometry</span>
+      <span class="card-arrow">Open bank →</span>
+    </a>
+
+    <a href="alg2/index.html" class="card">
+      <span class="card-icon">📐</span>
+      <span class="card-title">Course</span>
+      <span class="card-name">Algebra 2</span>
+      <span class="card-arrow">Open bank →</span>
+    </a>
+
+    <a href="precalc/index.html" class="card">
+      <span class="card-icon">∫</span>
+      <span class="card-title">Course</span>
+      <span class="card-name">Precalculus</span>
+      <span class="card-arrow">Open bank →</span>
+    </a>
+
+  </main>
+
+  <footer>Manistee ISD · Assessment Banks</footer>
 
-<div id="col-header">
-  <div>Problem ID</div><div>Question Preview</div><div>Unit</div>
-  <div>Sec</div><div>Source Type</div><div>Original</div>
-</div>
-
-<main>
-  <div id="list"></div>
-  <div id="empty">
-    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <p>No items match your filters</p>
-    <small>Try clearing the search or adjusting the dropdowns</small>
-  </div>
-  <div id="load-more-wrap" style="display:none"><button id="load-more">Load more</button></div>
-</main>
-
-<!-- MODAL -->
-<div id="modal">
-  <div class="mbox">
-    <div class="mhead">
-      <div class="mhead-top">
-        <span class="mtitle" id="mtitle"></span>
-        <button id="close-btn">✕ Close</button>
-      </div>
-      <div class="tab-bar">
-        <button class="tab active" data-tab="view">👁 View</button>
-        <button class="tab" data-tab="edit">✏️ Edit</button>
-      </div>
-    </div>
-    <div class="mbody">
-
-      <!-- VIEW TAB -->
-      <div class="tab-panel active" id="tab-view">
-        <div id="view-question"></div>
-        <div id="view-resources"></div>
-        <div class="source-box">
-
-          <div class="row-item"><span class="skey">Original CPM Source</span><span class="sval" id="src-original">—</span></div>
-          <div class="row-item"><span class="skey">Source Lesson</span><span class="sval" id="src-lesson">—</span></div>
-        </div>
-        <div class="meta-grid">
-          <div><div class="meta-label">Unit</div><div id="meta-unit">—</div></div>
-          <div><div class="meta-label">Section</div><div id="meta-section">—</div></div>
-          <div class="full"><div class="meta-label">Section Title</div><div id="meta-sec-title">—</div></div>
-          <div><div class="meta-label">Source Type</div><div id="meta-stype">—</div></div>
-          <div><div class="meta-label">Audit Status</div><div id="meta-status">—</div></div>
-          <div class="full"><div class="meta-label">Notes</div><div id="meta-notes">—</div></div>
-        </div>
-      </div>
-
-      <!-- EDIT TAB -->
-      <div class="tab-panel" id="tab-edit">
-        <div class="edit-intro">
-          <strong>Edit any field below.</strong> Hover the <strong>?</strong> next to each button to learn what it does.
-        </div>
-
-        <div class="edit-grid">
-
-          <!-- Identity (read-only display) -->
-          <div class="edit-field full">
-            <label>Problem ID <span style="font-weight:400;text-transform:none;letter-spacing:0">(read-only)</span></label>
-            <input type="text" id="edit-pid" readonly style="background:#f1f5f9;color:var(--muted);cursor:default;">
-          </div>
-
-          <!-- Classification -->
-          <div class="edit-field full">
-            <label>Unit &amp; Section</label>
-            <select id="edit-sec-combo"></select>
-          </div>
-          <div class="edit-field full">
-            <label>Section Title <span style="font-weight:400;text-transform:none;letter-spacing:0">(auto-filled from selection above, or override)</span></label>
-            <input type="text" id="edit-sec-title" placeholder="e.g. Solving Linear Equations">
-          </div>
-
-          <!-- Source -->
-          <div class="edit-field">
-            <label>Source Type</label>
-            <select id="edit-source-type"></select>
-          </div>
-          <div class="edit-field">
-            <label>Original CPM Source</label>
-            <input type="text" id="edit-original-source" placeholder="e.g. cpm-1-5">
-          </div>
-          <div class="edit-field">
-            <label>Source Lesson</label>
-            <input type="text" id="edit-source-lesson" placeholder="e.g. 1.1.1">
-          </div>
-
-
-          <!-- Status & Notes -->
-          <div class="edit-field">
-            <label>Audit Status</label>
-            <select id="edit-audit-status">
-              <option value="authoritative">authoritative</option>
-              <option value="source_only_inferred">source_only_inferred</option>
-            </select>
-          </div>
-          <div class="edit-field">
-            <label>Notes</label>
-            <textarea id="edit-notes"></textarea>
-          </div>
-
-          <!-- HTML -->
-          <div class="edit-field full">
-            <label>Question HTML</label>
-            <textarea id="edit-html" spellcheck="false"></textarea>
-            <span class="preview-toggle" id="toggle-preview">▶ Show live preview</span>
-            <div class="live-preview" id="live-preview"></div>
-          </div>
-
-        </div><!-- edit-grid -->
-
-        <div class="edit-actions">
-
-          <div class="btn-wrap">
-            <button class="btn btn-primary" id="btn-copy-json">📋 Copy updated JSON</button>
-            <span class="help-dot" tabindex="0">?</span>
-            <div class="tooltip">
-              <strong>Copy updated JSON</strong><br>
-              Builds a complete replacement object from all the fields below and copies it to your clipboard — it also appears in the code box below. In VS Code, search for the <strong>problem_id</strong>, select the entire <strong>{…}</strong> object, and paste to replace it. Save and reload.
-            </div>
-          </div>
-
-          <div class="btn-wrap">
-            <button class="btn btn-green" id="btn-apply-live">⚡ Apply to catalog</button>
-            <span class="help-dot" tabindex="0">?</span>
-            <div class="tooltip">
-              <strong>Apply to catalog (this session only)</strong><br>
-              Updates the item in memory and re-renders the row so you can see the fix live. Nothing is written to disk — if you close this tab, changes are gone. Use it to preview before committing to items.js.
-            </div>
-          </div>
-
-          <div class="btn-wrap">
-            <button class="btn btn-ghost" id="btn-reset-edit">↩ Reset</button>
-            <span class="help-dot" tabindex="0">?</span>
-            <div class="tooltip">
-              <strong>Reset changes</strong><br>
-              Throws away everything you've typed and restores all fields to what they were when you opened this item. Does not touch items.js.
-            </div>
-          </div>
-
-        </div>
-        <div class="export-box" id="export-box">
-          <label>Full item replacement — find this problem_id in items_unitX.js and replace the entire { … } object with this</label>
-          <textarea id="export-ta" readonly></textarea>
-          <div class="export-note">In VS Code: <kbd>Ctrl+F</kbd> the <code>problem_id</code> value, select from the opening <code>{</code> to the closing <code>}</code> of that object, paste this to replace it. Save and reload.</div>
-        </div>
-      </div><!-- tab-edit -->
-
-    </div><!-- mbody -->
-  </div><!-- mbox -->
-</div><!-- modal -->
-
-<!-- NEW QUESTION MODAL -->
-<div id="new-modal">
-  <div class="nmbox">
-    <div class="nmhead">
-      <span class="nmhead-title">＋ New Question</span>
-      <button id="new-close-btn">✕ Close</button>
-    </div>
-    <div class="nmbody">
-
-      <div class="new-intro">
-        Fill in the fields below, then click <strong>Copy new item JSON</strong>.
-        Open <code>items.js</code> in VS Code, scroll to the end of the array (just before the final <code>];</code>),
-        add a comma after the last item, then paste. Save the file and reload the catalog.
-      </div>
-
-      <div class="edit-grid">
-
-        <!-- Auto ID -->
-        <div class="edit-field full">
-          <label>Unit &amp; Section <span style="font-weight:400;text-transform:none;letter-spacing:0">— sets the problem ID prefix</span></label>
-          <select id="new-sec-combo"></select>
-          <div class="id-preview">Problem ID: <span id="new-id-preview">—</span></div>
-        </div>
-
-        <!-- Source fields -->
-        <div class="edit-field">
-          <label>Source Type</label>
-          <select id="new-source-type"></select>
-        </div>
-        <div class="edit-field">
-          <label>Original Source <span style="font-weight:400;text-transform:none;letter-spacing:0">(e.g. custom, cpm-1-5)</span></label>
-          <input type="text" id="new-original-source" placeholder="e.g. custom">
-        </div>
-        <div class="edit-field">
-          <label>Source Lesson</label>
-          <input type="text" id="new-source-lesson" placeholder="e.g. 1.1.1 or leave blank">
-        </div>
-        <div class="edit-field">
-          <label>Source File path</label>
-          <input type="text" id="new-source-file" placeholder="e.g. a1-1-1-1/a1-1-1-1.html or blank">
-        </div>
-
-        <!-- Audit / notes -->
-        <div class="edit-field">
-          <label>Audit Status</label>
-          <select id="new-audit-status">
-            <option value="authoritative">authoritative</option>
-            <option value="source_only_inferred">source_only_inferred</option>
-          </select>
-        </div>
-        <div class="edit-field">
-          <label>Notes</label>
-          <textarea id="new-notes" style="min-height:58px;" spellcheck="true"></textarea>
-        </div>
-
-        <!-- Question HTML -->
-        <div class="edit-field full">
-          <label>Question HTML</label>
-
-          <!-- Image helper -->
-          <div class="img-helper">
-            <div class="img-helper-title">📷 Image helper — inserts an &lt;img&gt; tag at cursor</div>
-            <div class="img-helper-row">
-              <input type="text" id="new-img-filename" placeholder="filename.png (must be in assets/)">
-              <input type="text" id="new-img-alt" placeholder="alt text description">
-              <div class="img-helper-btns">
-                <button class="img-insert-btn" id="new-img-insert">Insert image</button>
-                <button class="img-insert-btn secondary" id="new-img-figure">Insert as figure</button>
-              </div>
-            </div>
-          </div>
-
-          <textarea id="new-html" spellcheck="false" style="min-height:220px;margin-top:10px;width:100%;border:1px solid var(--border2);border-radius:7px;padding:9px 11px;font-family:'DM Mono',monospace;font-size:12px;line-height:1.5;resize:vertical;"></textarea>
-          <span class="preview-toggle" id="new-toggle-preview">▶ Show live preview</span>
-          <div class="live-preview" id="new-live-preview"></div>
-        </div>
-
-      </div><!-- edit-grid -->
-
-      <div class="edit-actions" style="margin-top:8px;">
-        <div class="btn-wrap">
-          <button class="btn btn-primary" id="new-btn-copy">📋 Copy new item JSON</button>
-          <span class="help-dot" tabindex="0">?</span>
-          <div class="tooltip">
-            <strong>Copy new item JSON</strong><br>
-            Builds a complete item object, assigns the next available problem ID for the chosen unit/section, and copies it to your clipboard. Open <strong>items.js</strong>, go to the very end of the array (just before <code>];</code>), add a comma after the last <code>}</code>, paste, and save.
-          </div>
-        </div>
-        <div class="btn-wrap">
-          <button class="btn btn-ghost" id="new-btn-clear">↩ Clear form</button>
-          <span class="help-dot" tabindex="0">?</span>
-          <div class="tooltip">
-            <strong>Clear form</strong><br>
-            Resets all fields so you can start a fresh new question.
-          </div>
-        </div>
-      </div>
-
-      <div class="export-box" id="new-export-box">
-        <label>New item JSON — add a comma after the last item in items.js, then paste this</label>
-        <textarea id="new-export-ta" readonly></textarea>
-        <div class="export-note">
-          In <code>items.js</code>: find the last <code>}</code> before <code>];</code>, add a <code>,</code> after it, then paste the block above on a new line.
-        </div>
-      </div>
-
-    </div><!-- nmbody -->
-  </div><!-- nmbox -->
-</div><!-- new-modal -->
-
-<!-- EXPORT MODAL -->
-<div id="exp-modal">
-  <div class="expbox">
-    <div class="exphead">
-      <span class="exphead-title">⬇ Export filtered items</span>
-      <button id="exp-close-btn">✕ Close</button>
-    </div>
-    <div class="expbody">
-      <div class="exp-intro">
-        Exporting <span class="exp-count-pill" id="exp-count">0 items</span>
-        based on your current filters. Choose a format and filename, then click <strong>Download ZIP</strong>.<br><br>
-        <strong>Images:</strong> Run the catalog via <code>python3 -m http.server 8000</code> from your catalog folder and open <code>http://localhost:8000/a1_catalog.html</code> — images will be bundled automatically. If you open the file directly (double-click), Chrome will ask you to select your <code>assets/</code> folder instead.
-      </div>
-
-      <div class="exp-field">
-        <label>Filename (no extension)</label>
-        <input type="text" id="exp-filename" placeholder="e.g. unit2_checkpoints" value="export">
-      </div>
-
-      <div class="exp-field">
-        <label>Worksheet title <span style="font-weight:400;text-transform:none;letter-spacing:0">(used in worksheet format only)</span></label>
-        <input type="text" id="exp-title" placeholder="e.g. Unit 2 Checkpoint Review">
-      </div>
-
-      <div class="exp-options">
-
-        <label class="exp-option selected" id="opt-bank-label">
-          <input type="radio" name="exp-format" value="bank" checked>
-          <div class="exp-option-text">
-            <strong>📚 Item Bank — Teacher Reference</strong>
-            <span>Continuous scroll, problem number + tagline + audit note + source info + question. Good for AI reference and building assessments.</span>
-          </div>
-        </label>
-
-        <label class="exp-option" id="opt-sheet-label">
-          <input type="radio" name="exp-format" value="worksheet">
-          <div class="exp-option-text">
-            <strong>📄 Worksheet — Student Facing</strong>
-            <span>8.5×11", 0.25" margins, title at top, questions only — no taglines, audit notes, or source info. Print-ready.</span>
-          </div>
-        </label>
-
-      </div>
-
-      <div class="exp-actions">
-        <button id="exp-go-btn">⬇ Download ZIP</button>
-        <span id="exp-status"></span>
-      </div>
-    </div>
-  </div>
-</div><!-- exp-modal -->
-
-<div id="toast"></div>
-
-<script src="items_unit0a.js"></script>
-<script src="items_unit0b.js"></script>
-<script src="items_unit1.js"></script>
-<script src="items_unit2.js"></script>
-<script src="items_unit3.js"></script>
-<script src="items_unit4.js?v=3"></script>
-<script src="items_unit5.js"></script>
-<script src="items_unit6.js"></script>
-<script src="items_unit7.js"></script>
-<script src="items_unit8.js"></script>
-<script src="items_other.js"></script>
-<script src="items_loader.js"></script>
-<script>
-
-
-// ── CONSTANTS ─────────────────────────────────────────────────────
-const UNIT_ORDER=[
-  'Unit 0A: Algebra Foundations Review','Unit 0B: Functions and Linear Readiness',
-  'Unit 1: Foundations of Functions and Algebra','Unit 2: Linear Functions and Modeling',
-  'Unit 3: Systems and Constraints','Unit 4: Function Families and Transformations',
-  'Unit 5: Factoring and Quadratic Functions','Unit 6: Solving and Modeling with Quadratics',
-  'Unit 7: Exponential Functions and Modeling','Unit 8: Function Analysis, Modeling, and Synthesis',
-  'Other'
-];
-const SEC_ORDER=['1','2','3','4','5'];
-const SRC_ORDER=['Lesson','Review/Preview','Learning Log','Checkpoint','Closure'];
-const PAGE=50;
-
-// ── STATE ─────────────────────────────────────────────────────────
-let filtered=[], shown=0, activeItem=null, _mjQueue=[];
-
-// ── MathJax wrapper — queues calls until MathJax is ready ─────────
-function mjTypeset(nodes){
-  if(!Array.isArray(nodes))nodes=[nodes];
-  nodes=nodes.filter(Boolean);
-  if(!nodes.length)return;
-  if(window._mjReady&&window.MathJax&&MathJax.typesetPromise){
-    MathJax.typesetPromise(nodes).catch(()=>{});
-  } else {
-    _mjQueue.push(...nodes);
-  }
-}
-window.addEventListener('mathjax-ready',()=>{
-  if(_mjQueue.length&&MathJax.typesetPromise){
-    MathJax.typesetPromise(_mjQueue).catch(()=>{});
-    _mjQueue=[];
-  }
-});
-
-// ── UTILS ─────────────────────────────────────────────────────────
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const $=id=>document.getElementById(id);
-function present(vals,order){const s=new Set(vals.filter(Boolean));return order.filter(v=>s.has(v));}
-function fillSel(sel,vals,label,allowCustom){
-  sel.innerHTML=`<option value="">${label}</option>`+vals.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('');
-}
-function debounce(fn,ms){let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms);};}
-function toast(msg,ms=2200){const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),ms);}
-function copyText(str){
-  navigator.clipboard.writeText(str).catch(()=>{
-    const ta=document.createElement('textarea');ta.value=str;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
-  });
-}
-function measureHdr(){
-  const h=$('hdr').offsetHeight;
-  $('col-header').style.top=h+'px';
-  document.documentElement.style.setProperty('--hdr-h',h+'px');
-}
-
-// ── BUILD SECTION LOOKUP ──────────────────────────────────────────
-// Deduplicate unit_section_title values in canonical order
-// unit_section_title already contains the full label e.g. "Unit 0A, Section 1: Rational Number Operations"
-// Strip any double-prefix and build clean labels
-function cleanSecTitle(raw){
-  if(!raw)return '';
-  // titles like "Unit 0A, Section 1: Unit 0A, Section 1: Rational Number..."
-  // strip the leading "Unit X, Section Y: " prefix if duplicated
-  return raw.replace(/^(Unit [^:]+:\s*)\1/,'$1').trim();
-}
-
-const SEC_MAP = []; // [{label, category, section}]
-const _seen = new Set();
-const _catIdx = Object.fromEntries(UNIT_ORDER.map((u,i)=>[u,i]));
-const _sorted = [...window.ITEMS].sort((a,b)=>{
-  const ci = (_catIdx[a.category]??99) - (_catIdx[b.category]??99);
-  if(ci!==0)return ci;
-  return String(a.section||'').localeCompare(String(b.section||''),undefined,{numeric:true});
-});
-for(const item of _sorted){
-  const raw = item.unit_section_title||'';
-  const label = cleanSecTitle(raw) || `${item.category} § ${item.section||'?'}`;
-  const key = item.category+'||'+item.section;
-  if(!_seen.has(key)){
-    _seen.add(key);
-    SEC_MAP.push({label, category:item.category, section:item.section});
-  }
-}
-
-// Populate filter sec dropdown
-(function(){
-  const sel = $('sec-filter');
-  sel.innerHTML='<option value="">All sections</option>';
-  SEC_MAP.forEach((s,i)=>{
-    const opt=document.createElement('option');
-    opt.value=String(i);
-    opt.textContent=s.label;
-    sel.appendChild(opt);
-  });
-})();
-
-// Populate unit filter (unique categories in order)
-(function(){
-  const sel=$('unit-filter');
-  sel.innerHTML='<option value="">All units</option>';
-  const seen=new Set();
-  SEC_MAP.forEach(s=>{
-    if(!seen.has(s.category)){
-      seen.add(s.category);
-      const opt=document.createElement('option');
-      opt.value=s.category;
-      // Short label: "Unit 0A", "Unit 1", etc.
-      const m=s.category.match(/^(Unit\s+\w+)/i);
-      opt.textContent=m?m[1]:s.category;
-      sel.appendChild(opt);
-    }
-  });
-})();
-
-// When unit changes, cascade: repopulate sec-filter to matching sections only
-$('unit-filter').addEventListener('change',()=>{
-  const cat=$('unit-filter').value;
-  const sec=$('sec-filter');
-  const prev=sec.value;
-  sec.innerHTML='<option value="">All sections</option>';
-  SEC_MAP.forEach((s,i)=>{
-    if(cat===''||s.category===cat){
-      const opt=document.createElement('option');
-      opt.value=String(i);
-      // When filtered by unit, show shorter label (drop unit prefix)
-      const shortLabel = cat!=='' ? s.label.replace(/^Unit\s+\w+,\s*/,'') : s.label;
-      opt.textContent=shortLabel;
-      sec.appendChild(opt);
-    }
-  });
-  // Try to restore previous selection
-  if([...sec.options].some(o=>o.value===prev)) sec.value=prev;
-  dRender();
-});
-
-// Populate edit section title dropdown
-(function(){
-  const sel = $('edit-sec-combo');
-  sel.innerHTML='<option value="">— choose section —</option>';
-  SEC_MAP.forEach((s,i)=>{
-    const opt=document.createElement('option');
-    opt.value=String(i);
-    opt.textContent=s.label;
-    sel.appendChild(opt);
-  });
-})();
-
-// ── SOURCE TYPE CHECKLIST ──────────────────────────────────────────
-(function(){
-  const dropdown=$('stype-dropdown');
-  const trigger=$('stype-trigger');
-  const labelEl=$('stype-label');
-  const clearBtn=$('stype-clear');
-
-  SRC_ORDER.forEach(val=>{
-    const cbId=`stype-cb-${val.replace(/\W/g,'')}`;
-    const div=document.createElement('div');
-    div.className='stype-option';
-    div.innerHTML=`<input type="checkbox" id="${cbId}" value="${val}"><label for="${cbId}">${val}</label>`;
-    div.querySelector('input').addEventListener('change',()=>{updateStypeLabel();dRender();});
-    dropdown.insertBefore(div,clearBtn);
-  });
-
-  function updateStypeLabel(){
-    const checked=window.getStypeValues();
-    labelEl.textContent=checked.length===0?'All types':checked.length===1?checked[0]:`${checked.length} types`;
-  }
-  trigger.addEventListener('click',e=>{e.stopPropagation();dropdown.classList.toggle('open');});
-  document.addEventListener('click',e=>{
-    if(!trigger.contains(e.target)&&!dropdown.contains(e.target))dropdown.classList.remove('open');
-  });
-  clearBtn.addEventListener('click',e=>{
-    e.stopPropagation();
-    dropdown.querySelectorAll('input').forEach(i=>i.checked=false);
-    updateStypeLabel();dRender();
-  });
-  window.getStypeValues=()=>[...dropdown.querySelectorAll('input:checked')].map(i=>i.value);
-})();
-
-// ── POPULATE OTHER FILTER SELECTS ─────────────────────────────────
-fillSel($('edit-source-type'), SRC_ORDER,'— choose type —');
-
-// ── FILTER ────────────────────────────────────────────────────────
-function getFiltered(){
-  const q=$('q').value.trim().toLowerCase();
-  const unitCat=$('unit-filter').value;
-  const secIdx=$('sec-filter').value;
-  const stypes=window.getStypeValues?window.getStypeValues():[];
-  const status=$('status').value;
-  const secEntry = secIdx!=='' ? SEC_MAP[parseInt(secIdx)] : null;
-  return window.ITEMS.filter(item=>{
-    if(unitCat&&!secEntry&&item.category!==unitCat)return false;
-    if(secEntry){
-      if(item.category!==secEntry.category)return false;
-      if(item.section!==secEntry.section)return false;
-    }
-    if(stypes.length&&!stypes.includes(item.source_type))return false;
-    if(status&&item.audit_status!==status)return false;
-    if(q){
-      const blob=(item.problem_id+' '+item.original_source+' '+(item.source_lesson||'')+' '+item.category+' '+(item.unit_section_title||'')+' '+(item.section||'')+' '+item.source_type+' '+(item.notes||'')+' '+(item.source_file||'')+' '+item.question_html).toLowerCase();
-      if(!blob.includes(q))return false;
-    }
-    return true;
-  });
-}
-
-// ── ROW BUILDER ───────────────────────────────────────────────────
-function buildRow(item){
-  const div=document.createElement('div');
-  div.className='row';
-  const sCls=item.audit_status==='authoritative'?'auth':'inferred';
-  const sLbl=item.audit_status==='authoritative'?'✓ Auth':'~ Inferred';
-  const resources=(item.resources||[]).length
-    ?`<div class="resource-links"><span class="resource-label">Res:</span>${(item.resources||[]).map(r=>`<a class="resource-chip" href="${esc(r.href)}" target="_blank" rel="noopener">${esc(r.label)}</a>`).join('')}</div>`:'';
-  const note=item.notes?`<div class="note-inline">${esc(item.notes)}</div>`:'';
-  div.innerHTML=`
-    <div class="cell">
-      <div class="pid">${esc(item.problem_id)}</div>
-      <span class="status-badge ${sCls}">${sLbl}</span>
-    </div>
-    <div class="cell">
-      <div class="preview-card" tabindex="0" role="button">${item.question_html}</div>
-      <div class="open-hint">click to expand / edit</div>
-      ${resources}${note}
-    </div>
-    <div class="cell hide-sm"><div class="category">${esc(item.category)}</div></div>
-    <div class="cell hide-sm">
-      <div class="sec-num">${esc(item.section||'—')}</div>
-      ${item.unit_section_title?`<div class="sec-title">${esc(item.unit_section_title)}</div>`:''}
-    </div>
-    <div class="cell hide-sm"><span class="pill">${esc(item.source_type)}</span></div>
-    <div class="cell hide-sm"><span class="source-mono">${esc(item.original_source)}</span></div>
-  `;
-  div.querySelector('.preview-card').addEventListener('click',()=>openModal(item,'view'));
-  div.querySelector('.preview-card').addEventListener('keydown',e=>{if(e.key==='Enter')openModal(item,'view');});
-  return div;
-}
-
-// ── RENDER ────────────────────────────────────────────────────────
-function render(reset){
-  const list=$('list'),empty=$('empty'),lmw=$('load-more-wrap');
-  if(reset){list.innerHTML='';shown=0;filtered=getFiltered();}
-  $('count-text').textContent=`${filtered.length} / ${window.ITEMS.length} items`;
-  if(filtered.length===0){empty.style.display='block';lmw.style.display='none';return;}
-  empty.style.display='none';
-  const batch=filtered.slice(shown,shown+PAGE);
-  const frag=document.createDocumentFragment();
-  const newCards=[];
-  batch.forEach(item=>{
-    const row=buildRow(item);
-    frag.appendChild(row);
-    newCards.push(row.querySelector('.preview-card'));
-  });
-  list.appendChild(frag);
-  shown+=batch.length;
-  // Typeset only newly added preview cards
-  mjTypeset(newCards);
-  lmw.style.display=shown<filtered.length?'block':'none';
-  $('load-more').disabled=false;
-  $('hint').textContent=shown<filtered.length?`Showing ${shown} of ${filtered.length} — load more below`:`All ${filtered.length} shown`;
-}
-
-// ── MODAL: OPEN ───────────────────────────────────────────────────
-function openModal(item,startTab='view'){
-  activeItem=item;
-  $('mtitle').textContent=`${item.problem_id} · ${item.original_source} · ${item.source_type}`;
-
-  // VIEW
-  $('view-question').innerHTML=item.question_html;
-  $('view-resources').innerHTML=(item.resources||[]).length
-    ?`<div class="resource-links" style="margin:10px 0 0"><span class="resource-label">Resources:</span>${(item.resources||[]).map(r=>`<a class="resource-chip" href="${esc(r.href)}" target="_blank" rel="noopener">${esc(r.label)}</a>`).join('')}</div>`:'';
-  $('src-original').textContent=item.original_source||'—';
-  $('src-lesson').textContent=item.source_lesson||'—';
-  $('meta-unit').textContent=item.category||'—';
-  $('meta-section').textContent=item.section?(item.section+(item.unit_section_title?' — '+item.unit_section_title:'')):'—';
-  $('meta-sec-title').textContent=item.unit_section_title||'—';
-  $('meta-stype').textContent=item.source_type||'—';
-  $('meta-status').textContent=item.audit_status||'—';
-  $('meta-notes').textContent=item.notes||'—';
-
-  // EDIT — populate all fields
-  $('edit-pid').value=item.problem_id||'';
-  // Find matching SEC_MAP index
-  const secIdx = SEC_MAP.findIndex(s=>s.category===item.category&&s.section===item.section);
-  $('edit-sec-combo').value = secIdx>=0 ? String(secIdx) : '';
-  $('edit-sec-title').value=item.unit_section_title||'';
-  $('edit-source-type').value=item.source_type||'';
-  $('edit-original-source').value=item.original_source||'';
-  $('edit-source-lesson').value=item.source_lesson||'';
-  $('edit-audit-status').value=item.audit_status||'authoritative';
-  $('edit-notes').value=item.notes||'';
-  $('edit-html').value=item.question_html||'';
-
-  // Reset export/preview state
-  $('export-box').style.display='none';
-  $('export-ta').value='';
-  $('live-preview').innerHTML='';
-  $('live-preview').classList.remove('visible');
-  $('toggle-preview').textContent='▶ Show live preview';
-
-  switchTab(startTab);
-  $('modal').classList.add('open');
-  mjTypeset([$('view-question')]);
-}
-
-function closeModal(){$('modal').classList.remove('open');activeItem=null;}
-
-// ── TABS ──────────────────────────────────────────────────────────
-function switchTab(name){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===name));
-  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.id===`tab-${name}`));
-}
-document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>switchTab(t.dataset.tab)));
-
-// ── COPY PATH ─────────────────────────────────────────────────────
-
-
-// ── LIVE PREVIEW ──────────────────────────────────────────────────
-$('toggle-preview').addEventListener('click',()=>{
-  const lp=$('live-preview');
-  const vis=lp.classList.toggle('visible');
-  $('toggle-preview').textContent=vis?'▼ Hide preview':'▶ Show live preview';
-  if(vis){lp.innerHTML=$('edit-html').value;mjTypeset([lp]);}
-});
-$('edit-html').addEventListener('input',debounce(()=>{
-  const lp=$('live-preview');
-  if(lp.classList.contains('visible')){
-    // Clear MathJax state on this node before re-setting innerHTML
-    if(window.MathJax&&MathJax.typesetClear)MathJax.typesetClear([lp]);
-    lp.innerHTML=$('edit-html').value;
-    mjTypeset([lp]);
-  }
-},300));
-
-// ── BUILD UPDATED ITEM ────────────────────────────────────────────
-function buildUpdated(){
-  if(!activeItem)return null;
-  const secIdx = $('edit-sec-combo').value;
-  const secEntry = secIdx!=='' ? SEC_MAP[parseInt(secIdx)] : null;
-  return Object.assign({},activeItem,{
-    category:      secEntry ? secEntry.category : activeItem.category,
-    section:       secEntry ? secEntry.section  : activeItem.section,
-    unit_section_title: $('edit-sec-title').value,
-    source_type:   $('edit-source-type').value||activeItem.source_type,
-    original_source:    $('edit-original-source').value,
-    source_lesson: $('edit-source-lesson').value,
-    audit_status:  $('edit-audit-status').value,
-    notes:         $('edit-notes').value,
-    question_html: $('edit-html').value,
-  });
-}
-
-// ── COPY JSON ─────────────────────────────────────────────────────
-$('btn-copy-json').addEventListener('click',()=>{
-  const u=buildUpdated();if(!u)return;
-  const json=JSON.stringify(u,null,2);
-  copyText(json);
-  $('export-box').style.display='block';
-  $('export-ta').value=json;
-  $('export-ta').style.height='auto';
-  $('export-ta').style.height=$('export-ta').scrollHeight+'px';
-  toast('JSON copied! Paste into items.js to save permanently.');
-});
-
-// ── APPLY LIVE ────────────────────────────────────────────────────
-$('btn-apply-live').addEventListener('click',()=>{
-  const u=buildUpdated();if(!u)return;
-  const idx=window.ITEMS.findIndex(i=>i.problem_id===u.problem_id);
-  if(idx===-1){toast('Item not found');return;}
-  window.ITEMS[idx]=u;
-  // Refresh view tab
-  $('view-question').innerHTML=u.question_html;
-  $('meta-notes').textContent=u.notes||'—';
-  $('meta-status').textContent=u.audit_status||'—';
-  $('meta-unit').textContent=u.category||'—';
-  $('meta-section').textContent=u.section?(u.section+(u.unit_section_title?' — '+u.unit_section_title:'')):'—';
-  $('meta-sec-title').textContent=u.unit_section_title||'—';
-  $('meta-stype').textContent=u.source_type||'—';
-  $('src-original').textContent=u.original_source||'—';
-  $('src-lesson').textContent=u.source_lesson||'—';
-  $('mtitle').textContent=`${u.problem_id} · ${u.original_source} · ${u.source_type}`;
-  mjTypeset([$('view-question')]);
-  render(true);
-  toast('Applied to this session ⚡ — copy JSON to save permanently');
-});
-
-// ── RESET ─────────────────────────────────────────────────────────
-$('btn-reset-edit').addEventListener('click',()=>{
-  if(!activeItem)return;
-  const resetSecIdx = SEC_MAP.findIndex(s=>s.category===activeItem.category&&s.section===activeItem.section);
-  $('edit-sec-combo').value = resetSecIdx>=0 ? String(resetSecIdx) : '';
-  $('edit-sec-title').value=activeItem.unit_section_title||'';
-  $('edit-source-type').value=activeItem.source_type||'';
-  $('edit-original-source').value=activeItem.original_source||'';
-  $('edit-source-lesson').value=activeItem.source_lesson||'';
-  $('edit-audit-status').value=activeItem.audit_status||'authoritative';
-  $('edit-notes').value=activeItem.notes||'';
-  $('edit-html').value=activeItem.question_html||'';
-  $('export-box').style.display='none';
-  $('live-preview').innerHTML='';
-  $('live-preview').classList.remove('visible');
-  $('toggle-preview').textContent='▶ Show live preview';
-  toast('Reset to original values');
-});
-
-// ── AUTO-FILL SECTION TITLE FROM COMBO ───────────────────────────
-$('edit-sec-combo').addEventListener('change',()=>{
-  const idx=$('edit-sec-combo').value;
-  if(idx!==''){
-    const entry=SEC_MAP[parseInt(idx)];
-    if(entry)$('edit-sec-title').value=entry.label;
-  }
-});
-
-// ── FILTER EVENTS ─────────────────────────────────────────────────
-const dRender=debounce(()=>render(true),220);
-['q','unit-filter','sec-filter','status'].forEach(id=>$(id).addEventListener('input',dRender));
-$('load-more').addEventListener('click',()=>{$('load-more').disabled=true;render(false);});
-$('close-btn').addEventListener('click',closeModal);
-$('modal').addEventListener('click',e=>{if(e.target===$('modal'))closeModal();});
-// Escape handled in new question block above
-
-
-// ── NEW QUESTION ──────────────────────────────────────────────────
-
-// Populate new-modal selects (reuse SEC_MAP + SRC_ORDER built above)
-(function(){
-  // Section combo
-  const sc=$('new-sec-combo');
-  sc.innerHTML='<option value="">— choose unit & section —</option>';
-  SEC_MAP.forEach((s,i)=>{
-    const opt=document.createElement('option');
-    opt.value=String(i);opt.textContent=s.label;sc.appendChild(opt);
-  });
-  // Source type
-  fillSel($('new-source-type'),SRC_ORDER,'— choose type —');
-})();
-
-// Next available ID for a given unit prefix
-function nextId(secEntry){
-  // unit prefix: e.g. "Unit 0A: ..." → "unit0A", "Unit 1: ..." → "unit01"
-  const cat=secEntry.category;
-  const m=cat.match(/Unit\s+(\w+)/i);
-  if(!m)return'new-0001';
-  let label=m[1]; // e.g. "0A", "0B", "1", "2" …
-  // Pad single digits: 1→01, 2→02 … 9→09; 0A/0B stay as-is
-  if(/^\d$/.test(label)) label='0'+label;
-  const prefix=`unit${label}`;
-  const existing=window.ITEMS
-    .filter(i=>i.problem_id.startsWith(prefix+'-'))
-    .map(i=>parseInt(i.problem_id.split('-')[1]||'0'))
-    .filter(n=>!isNaN(n));
-  const next=(existing.length?Math.max(...existing):0)+1;
-  return`${prefix}-${String(next).padStart(4,'0')}`;
-}
-
-// Update ID preview when section changes
-$('new-sec-combo').addEventListener('change',()=>{
-  const idx=$('new-sec-combo').value;
-  if(idx===''){$('new-id-preview').textContent='—';return;}
-  const entry=SEC_MAP[parseInt(idx)];
-  $('new-id-preview').textContent=nextId(entry);
-});
-
-// Image insert helpers
-function insertAtCursor(ta,text){
-  const s=ta.selectionStart,e=ta.selectionEnd;
-  ta.value=ta.value.slice(0,s)+text+ta.value.slice(e);
-  ta.selectionStart=ta.selectionEnd=s+text.length;
-  ta.focus();
-  ta.dispatchEvent(new Event('input'));
-}
-$('new-img-insert').addEventListener('click',()=>{
-  const fn=$('new-img-filename').value.trim();
-  const alt=$('new-img-alt').value.trim()||fn;
-  if(!fn){toast('Enter a filename first');return;}
-  insertAtCursor($('new-html'),`<img src="assets/${fn}" alt="${alt}" style="max-width:100%;height:auto;display:block;margin:8px 0;">`);
-});
-$('new-img-figure').addEventListener('click',()=>{
-  const fn=$('new-img-filename').value.trim();
-  const alt=$('new-img-alt').value.trim()||fn;
-  if(!fn){toast('Enter a filename first');return;}
-  insertAtCursor($('new-html'),`<figure class="figure"><img src="assets/${fn}" alt="${alt}"><figcaption>${alt}</figcaption></figure>`);
-});
-
-// Live preview for new modal
-$('new-toggle-preview').addEventListener('click',()=>{
-  const lp=$('new-live-preview');
-  const vis=lp.classList.toggle('visible');
-  $('new-toggle-preview').textContent=vis?'▼ Hide preview':'▶ Show live preview';
-  if(vis){lp.innerHTML=$('new-html').value;mjTypeset([lp]);}
-});
-$('new-html').addEventListener('input',debounce(()=>{
-  const lp=$('new-live-preview');
-  if(lp.classList.contains('visible')){
-    if(window.MathJax&&MathJax.typesetClear)MathJax.typesetClear([lp]);
-    lp.innerHTML=$('new-html').value;mjTypeset([lp]);
-  }
-},300));
-
-// Build new item object
-function buildNewItem(){
-  const idx=$('new-sec-combo').value;
-  if(idx===''){toast('Please choose a unit & section first');return null;}
-  const entry=SEC_MAP[parseInt(idx)];
-  const pid=nextId(entry);
-  return{
-    problem_id: pid,
-    original_source: $('new-original-source').value.trim()||'custom',
-    source_lesson: $('new-source-lesson').value.trim(),
-    category: entry.category,
-    section: entry.section,
-    unit_section_title: entry.label,
-    source_type: $('new-source-type').value||'Lesson',
-    audit_status: $('new-audit-status').value,
-    notes: $('new-notes').value.trim(),
-    location: '',
-    question_html: $('new-html').value.trim(),
-    resources: [],
-    source_file: $('new-source-file').value.trim(),
-  };
-}
-
-$('new-btn-copy').addEventListener('click',()=>{
-  const item=buildNewItem();if(!item)return;
-  const json=JSON.stringify(item,null,2);
-  copyText(json);
-  $('new-export-box').style.display='block';
-  $('new-export-ta').value=json;
-  $('new-export-ta').style.height='auto';
-  $('new-export-ta').style.height=$('new-export-ta').scrollHeight+'px';
-  toast(`New item ${item.problem_id} copied! Paste into items.js.`);
-});
-
-$('new-btn-clear').addEventListener('click',()=>{
-  $('new-sec-combo').value='';
-  $('new-id-preview').textContent='—';
-  ['new-source-type','new-original-source','new-source-lesson',
-   'new-source-file','new-notes','new-html','new-img-filename','new-img-alt']
-    .forEach(id=>{const el=$(id);if(el)el.value='';});
-  $('new-audit-status').value='authoritative';
-  $('new-export-box').style.display='none';
-  $('new-live-preview').innerHTML='';
-  $('new-live-preview').classList.remove('visible');
-  $('new-toggle-preview').textContent='▶ Show live preview';
-  toast('Form cleared');
-});
-
-// Open / close
-$('add-btn').addEventListener('click',()=>{
-  $('new-export-box').style.display='none';
-  $('new-modal').classList.add('open');
-});
-function closeNewModal(){$('new-modal').classList.remove('open');}
-$('new-close-btn').addEventListener('click',closeNewModal);
-$('new-modal').addEventListener('click',e=>{if(e.target===$('new-modal'))closeNewModal();});
-// Esc closes whichever modal is open
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){closeModal();closeNewModal();}
-});
-
-// ── EXPORT ────────────────────────────────────────────────────────
-
-// Style radio labels on click
-document.querySelectorAll('.exp-option input[type=radio]').forEach(radio=>{
-  radio.addEventListener('change',()=>{
-    document.querySelectorAll('.exp-option').forEach(el=>el.classList.remove('selected'));
-    radio.closest('.exp-option').classList.add('selected');
-  });
-});
-
-// Open export modal
-$('export-btn').addEventListener('click',()=>{
-  $('exp-count').textContent=`${filtered.length} item${filtered.length===1?'':'s'}`;
-  $('exp-status').textContent='';
-  $('exp-modal').classList.add('open');
-});
-function closeExpModal(){$('exp-modal').classList.remove('open');}
-$('exp-close-btn').addEventListener('click',closeExpModal);
-$('exp-modal').addEventListener('click',e=>{if(e.target===$('exp-modal'))closeExpModal();});
-
-// ── HTML generators ────────────────────────────────────────────────
-function imgSrcs(html){
-  const srcs=[];
-  const re=/src=["']([^"']+\.png)["']/g;
-  let m;while((m=re.exec(html))!==null)srcs.push(m[1]);
-  return srcs;
-}
-
-function bankHtml(items, fname){
-  const rows = items.map((item,i)=>{
-    const src = item.original_source||'';
-    const lesson = item.source_lesson ? ` · ${item.source_lesson}` : '';
-    const sf = item.source_file ? `<div class="meta-line">📁 ${esc(item.source_file)}</div>` : '';
-    const notes = item.notes ? `<div class="meta-line notes">📝 ${esc(item.notes)}</div>` : '';
-    return `
-<div class="item${i>0?' divider':''}">
-  <div class="meta-block">
-    <span class="pid">${esc(item.problem_id)}</span>
-    <span class="pill">${esc(item.source_type)}</span>
-    <span class="meta-cat">${esc(item.category)} › §${esc(item.section||'?')} ${esc(item.unit_section_title||'')}</span>
-    <span class="meta-src">Source: ${esc(src)}${esc(lesson)}</span>
-    ${sf}${notes}
-  </div>
-  <div class="question-wrap">${item.question_html}</div>
-</div>`;
-  }).join('');
-
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>${esc(fname)}</title>
-\x3cscript>MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},startup:{typeset:true}};<\/script>
-\x3cscript async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"><\/script>
-<style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:system-ui,-apple-system,sans-serif;font-size:13px;color:#111;background:#fff;padding:24px 32px;}
-h1{font-size:18px;font-weight:800;color:#0d3060;margin-bottom:6px;}
-.subtitle{font-size:12px;color:#6b7280;margin-bottom:24px;}
-.item{padding:14px 0;}
-.divider{border-top:1px solid #e2e8f0;padding-top:14px;}
-.meta-block{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px;font-size:11px;}
-.pid{font-family:monospace;font-weight:700;color:#0d3060;background:#eff6ff;border:1px solid #bfdbfe;padding:2px 8px;border-radius:999px;}
-.pill{background:#eff6ff;border:1px solid #bfdbfe;padding:2px 8px;border-radius:999px;font-weight:600;color:#2563eb;}
-.meta-cat{color:#374151;}
-.meta-src{color:#6b7280;font-family:monospace;}
-.meta-line{color:#6b7280;font-size:10px;width:100%;}
-.meta-line.notes{font-style:italic;}
-.question-wrap .problem{border:1px solid #bbb;border-left:5px solid #0d3060;padding:10px 14px;font-family:Georgia,serif;font-size:13px;line-height:1.5;background:#fdfdfd;}
-.question-wrap .problem h2,.question-wrap .problem h3{font-size:15px;font-weight:800;color:#0d3060;margin-bottom:6px;}
-.question-wrap .audit{font-size:10px;color:#9ca3af;font-style:italic;padding-left:6px;border-left:2px solid #e2e8f0;margin-bottom:4px;}
-.question-wrap .tagline{font-size:11px;color:#9ca3af;margin-bottom:4px;}
-.question-wrap .workspace{display:none;}
-.question-wrap img{max-width:100%;height:auto;display:block;margin:8px 0;}
-.question-wrap ol,.question-wrap ul{margin-left:20px;}
-.question-wrap table{border-collapse:collapse;}
-.question-wrap td,.question-wrap th{padding:3px 6px;}
-</style>
-</head>
-<body>
-<h1>${esc(fname)}</h1>
-<div class="subtitle">${items.length} items · exported ${new Date().toLocaleDateString()}</div>
-${rows}
-</body></html>`;
-}
-
-function worksheetHtml(items, title, fname){
-  const rows = items.map((item,i)=>{
-    // Strip tagline, audit, workspace divs — keep only content
-    let qhtml = item.question_html;
-    qhtml = qhtml.replace(/<div[^>]*class="[^"]*tagline[^"]*"[^>]*>.*?<\/div>/gs,'');
-    qhtml = qhtml.replace(/<div[^>]*class="[^"]*audit[^"]*"[^>]*>.*?<\/div>/gs,'');
-    qhtml = qhtml.replace(/<div[^>]*class="[^"]*workspace[^"]*"[^>]*>.*?<\/div>/gs,'');
-    qhtml = qhtml.replace(/<div[^>]*class="[^"]*tagline[^"]*"[^>]*>/gs,'<div style="display:none">');
-    return `<div class="q-item">${qhtml}</div>`;
-  }).join('\n');
-
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>${esc(title||fname)}</title>
-\x3cscript>MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},startup:{typeset:true}};<\/script>
-\x3cscript async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"><\/script>
-<style>
-@page{size:8.5in 11in;margin:.25in;}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:Georgia,'Times New Roman',serif;font-size:12px;color:#000;background:#fff;}
-h1{font-size:17px;font-weight:800;text-align:center;margin-bottom:16px;font-family:system-ui,sans-serif;}
-.q-item{margin-bottom:14px;page-break-inside:avoid;}
-.q-item .problem{border:1px solid #bbb;border-left:5px solid #1e3a8a;padding:8px 12px;font-size:12px;line-height:1.5;background:#fff;}
-.q-item .problem h2,.q-item .problem h3{font-size:14px;font-weight:800;color:#1e3a8a;margin-bottom:4px;}
-.q-item .problem-title{font-size:14px;font-weight:800;color:#1e3a8a;margin-bottom:4px;}
-.q-item .audit,.q-item .tagline,.q-item .workspace{display:none;}
-.q-item img{max-width:100%;height:auto;display:block;margin:6px 0;}
-.q-item ol,.q-item ul{margin-left:18px;}
-.q-item table{border-collapse:collapse;}
-.q-item td,.q-item th{padding:2px 5px;}
-</style>
-</head>
-<body>
-<h1>${esc(title||fname)}</h1>
-${rows}
-</body></html>`;
-}
-
-// ── Build and download ZIP ─────────────────────────────────────────
-$('exp-go-btn').addEventListener('click', async ()=>{
-  if(!filtered.length){toast('No items to export');return;}
-  if(typeof JSZip==='undefined'){toast('JSZip not loaded yet — try again in a moment');return;}
-
-  const fname = ($('exp-filename').value.trim()||'export').replace(/[^a-zA-Z0-9_\-]/g,'_');
-  const title = $('exp-title').value.trim()||fname;
-  const format = document.querySelector('input[name="exp-format"]:checked').value;
-  const btn=$('exp-go-btn');
-  const status=$('exp-status');
-
-  btn.disabled=true;
-  status.textContent='Building…';
-
-  try{
-    const zip = new JSZip();
-
-    // Generate HTML
-    const htmlContent = format==='bank'
-      ? bankHtml(filtered, fname)
-      : worksheetHtml(filtered, title, fname);
-
-    zip.file(`${fname}.html`, htmlContent);
-
-    // Collect unique image filenames referenced by filtered items
-    const imgSet = new Set();
-    filtered.forEach(item=>{
-      imgSrcs(item.question_html).forEach(src=>{
-        // Normalise: could be assets/foo.png or just foo.png
-        const base = src.replace(/^.*\/([^/]+)$/,'$1');
-        imgSet.add(base);
-      });
-    });
-
-    let fetched=0, skipped=0;
-    const assetsFolder = zip.folder('assets');
-
-    if(imgSet.size > 0){
-      status.textContent=`Fetching ${imgSet.size} image${imgSet.size===1?'':'s'}…`;
-
-      const testFetch = await fetch('assets/' + [...imgSet][0]).catch(()=>null);
-      const serverMode = testFetch && testFetch.ok;
-
-      if(serverMode){
-        await Promise.allSettled([...imgSet].map(async img_fname=>{
-          try{
-            const resp = await fetch(`assets/${img_fname}`);
-            if(!resp.ok) throw new Error(resp.status);
-            assetsFolder.file(img_fname, await resp.arrayBuffer());
-            fetched++;
-          } catch(e){ skipped++; }
-        }));
-      } else {
-        if(window.showDirectoryPicker){
-          status.textContent=`Select your assets/ folder to bundle images (or cancel to skip)…`;
-          try{
-            const dirHandle = await window.showDirectoryPicker({mode:'read'});
-            await Promise.allSettled([...imgSet].map(async img_fname=>{
-              try{
-                const fh = await dirHandle.getFileHandle(img_fname);
-                const file = await fh.getFile();
-                assetsFolder.file(img_fname, await file.arrayBuffer());
-                fetched++;
-              } catch(e){ skipped++; }
-            }));
-          } catch(e){ skipped=imgSet.size; }
-        } else {
-          skipped=imgSet.size;
-        }
-      }
-    }
-
-    status.textContent='Zipping…';
-    const blob = await zip.generateAsync({type:'blob',compression:'DEFLATE',compressionOptions:{level:6}});
-
-    // Trigger download
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href=url; a.download=`${fname}.zip`;
-    document.body.appendChild(a); a.click();
-    document.body.removeChild(a);
-    setTimeout(()=>URL.revokeObjectURL(url), 5000);
-
-    let statusMsg = `✓ Downloaded ${fname}.zip — ${filtered.length} items`;
-    if(imgSet.size>0){
-      statusMsg += skipped>0
-        ? `, ${fetched}/${imgSet.size} images bundled (${skipped} missing — use python3 -m http.server for full export)`
-        : `, all ${fetched} image${fetched===1?'':'s'} bundled ✓`;
-    }
-    status.textContent=statusMsg;
-  } catch(err){
-    status.textContent='Error: '+err.message;
-    console.error(err);
-  } finally{
-    btn.disabled=false;
-  }
-});
-
-// ── INIT ──────────────────────────────────────────────────────────
-measureHdr();
-window.addEventListener('resize',measureHdr);
-render(true);
-</script>
 </body>
 </html>

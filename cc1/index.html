@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CC1 Chapter 1 Problem Catalog POC</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+  MathJax = { tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']] } };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <h1>CC1 Chapter 1 Problem Catalog</h1>
+    <p>Proof of concept: lesson-based data files, clean previews, filters, search, and checkboxes.</p>
+  </header>
+  <div class="view-controls">
+    <div class="selection-actions" aria-label="Selection and export controls">
+      <span id="selectedCountTop" class="selected-count" aria-live="polite">0 selected</span>
+      <span id="stats" class="top-stats">Loading...</span>
+      <label class="select-all-row compact"><input id="selectAllFiltered" type="checkbox"> <span>Select all filtered</span></label>
+      <button id="clearSelected" class="btn small-btn" type="button">Clear selected</button>
+      <button id="worksheetTest" class="btn small-btn" type="button">Worksheet</button>
+      <button id="exportSelectedBank" class="btn small-btn" type="button">Export selected</button>
+      <button id="exportFilteredBank" class="btn small-btn" type="button">Export filtered</button>
+      <button id="newQuestion" class="btn small-btn" type="button">New question</button>
+    </div>
+    <span id="previewStatus" class="preview-status" aria-live="polite"></span>
+  </div>
+  <main class="layout" id="mainLayout">
+    <section class="panel filters-panel">
+      <h2 class="panel-title"><span>Filters</span><label class="panel-switch title-switch" title="Show or collapse filters"><input id="showFiltersPanel" type="checkbox" checked><span class="switch-text">Show</span></label></h2>
+      <div class="filters">
+        <div class="field"><label for="search">Search</label><input id="search" type="search" placeholder="problem number, text, type..."></div>
+        <div class="field"><label>Chapter</label><div class="multi-filter" id="chapterMulti"><button id="chapterTrigger" class="multi-trigger" type="button"><span id="chapterLabel">All chapters</span><span class="multi-arrow">▾</span></button><div id="chapterDropdown" class="multi-dropdown"></div></div></div>
+        <div class="field"><label>Section</label><div class="multi-filter" id="sectionMulti"><button id="sectionTrigger" class="multi-trigger" type="button"><span id="sectionLabel">All sections</span><span class="multi-arrow">▾</span></button><div id="sectionDropdown" class="multi-dropdown"></div></div></div>
+        <div class="field"><label>Source Type</label><div class="multi-filter" id="sourceMulti"><button id="sourceTrigger" class="multi-trigger" type="button"><span id="sourceLabel">All types</span><span class="multi-arrow">▾</span></button><div id="sourceDropdown" class="multi-dropdown"></div></div></div>
+        <label class="toggle-row"><input id="showAllFiltered" type="checkbox"> <span>Display all filtered previews</span></label>
+        <button id="clearFilters" class="btn">Clear filters</button>
+        <p class="small-note">Use the top action bar for selecting, worksheet tests, and bank exports. Selection is stored only while the page is open.</p>
+      </div>
+    </section>
+    <section class="panel list-panel">
+      <h2 class="panel-title"><span>Problem List</span><label class="panel-switch title-switch" title="Show or collapse list"><input id="showListPanel" type="checkbox" checked><span class="switch-text">Show</span></label></h2>
+      <div id="problemList" class="problem-list"></div>
+    </section>
+    <section class="panel preview-panel">
+      <h2 class="panel-title"><span>Preview</span><label class="panel-switch title-switch" title="Show or collapse preview"><input id="showPreviewPanel" type="checkbox" checked><span class="switch-text">Show</span></label></h2>
+      <div id="preview" class="preview"><div class="empty">Choose a problem to preview the cleaned extracted HTML.</div></div>
+    </section>
+  </main>
+
+  <div id="editModal" class="modal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="editTitle">
+      <div class="modal-head">
+        <div>
+          <div id="editTitle" class="modal-title">Edit Problem</div>
+          <div id="editSubtitle" class="modal-subtitle"></div>
+        </div>
+        <button id="closeEdit" class="btn modal-close" type="button">Close</button>
+      </div>
+      <div class="tab-strip">
+        <button id="viewTabBtn" class="tab-btn active" type="button">View</button>
+        <button id="editTabBtn" class="tab-btn" type="button">Edit</button>
+      </div>
+      <div class="modal-body">
+        <section id="viewTab" class="tab-panel active">
+          <div id="modalViewContent"></div>
+        </section>
+        <section id="editTab" class="tab-panel">
+          <div class="edit-note"><strong>Problem number is locked.</strong> It is the permanent CPM source ID. Worksheet and assessment numbering will happen later during export.</div>
+          <div class="edit-grid">
+            <div class="edit-field full"><label>Permanent ID</label><input id="editId" type="text" readonly></div>
+            <div class="edit-field"><label>Problem Number</label><input id="editNumber" type="text" readonly></div>
+            <div class="edit-field"><label>Lesson File</label><input id="editLessonFile" type="text" readonly></div>
+            <div class="edit-field"><label>Chapter</label><input id="editChapter" type="text"></div>
+            <div class="edit-field"><label>Section</label><input id="editSection" type="text"></div>
+            <div class="edit-field"><label>Source Type</label><select id="editSourceType"></select></div>
+            <div class="edit-field"><label>DOK</label><input id="editDok" type="text" placeholder="blank"></div>
+            <div class="edit-field full"><label>Topic</label><input id="editTopic" type="text" placeholder="blank"></div>
+            <div class="edit-field full"><label>Standards <span class="hint">comma separated</span></label><input id="editStandards" type="text" placeholder="blank"></div>
+            <div class="edit-field full"><label>Tags <span class="hint">comma separated</span></label><input id="editTags" type="text" placeholder="blank"></div>
+            <div class="edit-field full"><label>Teacher Notes</label><textarea id="editTeacherNotes" rows="3" placeholder="blank"></textarea></div>
+            <div class="edit-field full"><label>Question HTML</label><textarea id="editHtml" rows="14" spellcheck="false"></textarea></div>
+          </div>
+          <button id="toggleLivePreview" class="link-btn" type="button">▶ Show live preview</button>
+          <div id="editLivePreview" class="live-preview"></div>
+          <div class="edit-actions">
+            <button id="applyEdit" class="btn primary" type="button">Apply to preview</button>
+            <button id="downloadLesson" class="btn success" type="button">Download updated lesson JS</button>
+            <button id="resetEdit" class="btn" type="button">Reset</button>
+          </div>
+          <p class="small-note">Apply updates only this browser session. Download the updated lesson JS file and replace that lesson file in GitHub to save permanently.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="newModal" class="modal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="newTitle">
+      <div class="modal-head">
+        <div>
+          <div id="newTitle" class="modal-title">New Question</div>
+          <div id="newSubtitle" class="modal-subtitle">Create a teacher-created item and download the updated lesson JS file.</div>
+        </div>
+        <button id="closeNew" class="btn modal-close" type="button">Close</button>
+      </div>
+      <div class="tab-strip">
+        <button id="newEditTabBtn" class="tab-btn active" type="button">Edit</button>
+        <button id="newViewTabBtn" class="tab-btn" type="button">Preview</button>
+      </div>
+      <div class="modal-body">
+        <section id="newEditTab" class="tab-panel active">
+          <div class="edit-note"><strong>New questions are teacher-created.</strong> Choose the lesson file where this item should live. The app will append the item and download that updated lesson JS file.</div>
+          <div class="edit-grid">
+            <div class="edit-field full"><label>Lesson File</label><select id="newLessonSlug"></select></div>
+            <div class="edit-field full"><label>Permanent ID <span class="hint">auto-generated</span></label><input id="newId" type="text" readonly></div>
+            <div class="edit-field"><label>Problem Number <span class="hint">auto-generated</span></label><input id="newNumber" type="text" readonly></div>
+            <div class="edit-field"><label>Source Type</label><select id="newSourceType"></select></div>
+            <div class="edit-field"><label>Chapter</label><input id="newChapter" type="text"></div>
+            <div class="edit-field"><label>Section</label><input id="newSection" type="text"></div>
+            <div class="edit-field"><label>DOK</label><input id="newDok" type="text" placeholder="blank"></div>
+            <div class="edit-field full"><label>Topic</label><input id="newTopic" type="text" placeholder="blank"></div>
+            <div class="edit-field full"><label>Standards <span class="hint">comma separated</span></label><input id="newStandards" type="text" placeholder="blank"></div>
+            <div class="edit-field full"><label>Tags <span class="hint">comma separated</span></label><input id="newTags" type="text" placeholder="teacher-created, optional"></div>
+            <div class="edit-field full"><label>Teacher Notes</label><textarea id="newTeacherNotes" rows="3" placeholder="blank"></textarea></div>
+            <div class="edit-field full"><label>Question HTML</label><textarea id="newHtml" rows="14" spellcheck="false"></textarea></div>
+          </div>
+          <button id="toggleNewLivePreview" class="link-btn" type="button">▶ Show live preview</button>
+          <div id="newLivePreview" class="live-preview"></div>
+          <div class="edit-actions">
+            <button id="applyNew" class="btn primary" type="button">Apply to catalog</button>
+            <button id="downloadNewLesson" class="btn success" type="button">Download updated lesson JS</button>
+            <button id="resetNew" class="btn" type="button">Reset</button>
+          </div>
+          <p class="small-note">Apply updates only this browser session. Download the updated lesson JS file and replace that lesson file in GitHub to save permanently.</p>
+        </section>
+        <section id="newViewTab" class="tab-panel">
+          <div id="newViewContent" class="live-preview visible"></div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div id="worksheetModal" class="modal" aria-hidden="true">
+    <div class="modal-box worksheet-modal-box" role="dialog" aria-modal="true" aria-labelledby="worksheetTitle">
+      <div class="modal-head">
+        <div>
+          <div id="worksheetTitle" class="modal-title">Worksheet Test</div>
+          <div id="worksheetSubtitle" class="modal-subtitle">Use selected problems to test workspace controls.</div>
+        </div>
+        <button id="closeWorksheet" class="btn modal-close" type="button">Close</button>
+      </div>
+      <div class="modal-body">
+        <div class="edit-note"><strong id="worksheetSelectedCount">0 selected.</strong> Set defaults, then adjust individual problems below.</div>
+        <div class="edit-grid worksheet-defaults-grid">
+          <div class="edit-field full"><label>Worksheet Title</label><input id="worksheetTitleInput" type="text" value="CC1 Chapter 1 Worksheet Test"></div>
+          <div class="edit-field"><label>Worksheet Font Size</label><div class="font-stepper"><button id="wsFontDown" type="button" class="mini-btn">−</button><input id="wsFontSize" type="number" min="8" max="18" step="0.5" value="12"><button id="wsFontUp" type="button" class="mini-btn">+</button><span>pt</span></div></div>
+          <div class="edit-field"><label>Default Workspace Size</label><select id="wsSize"><option value="none">None</option><option value="small">Small</option><option value="medium" selected>Medium</option><option value="large">Large</option><option value="xlarge">Extra large</option></select></div>
+          <div class="edit-field"><label>Default Insert</label><select id="wsInsert"><option value="none">None</option><option value="coordinate">Coordinate plane</option><option value="square">Square grid</option><option value="dot">Dot grid</option><option value="numberline">Blank number line</option><option value="numberline_neg10">Number line -10 to 10</option></select></div>
+          <div class="edit-field"><label>Default Question Image Size</label><select id="wsQuestionImageSize"><option value="tiny">Tiny</option><option value="xsmall">Extra small</option><option value="small" selected>Small</option><option value="medium">Medium</option><option value="large">Large</option><option value="xlarge">Extra large</option><option value="full">Full width</option></select></div>
+          <div class="edit-field"><label>Default Workspace Image Size</label><select id="wsImageSize"><option value="tiny">Tiny</option><option value="small">Small</option><option value="medium" selected>Medium</option><option value="large">Large</option><option value="xlarge">Extra large</option><option value="full">Full width</option></select></div>
+          <div class="edit-field apply-defaults-field"><label>&nbsp;</label><button id="applyWsDefaults" class="btn" type="button">Apply defaults to all selected</button></div>
+        </div>
+        <div id="worksheetItemControls" class="worksheet-item-controls"></div>
+        <div class="edit-actions">
+          <button id="previewWorksheet" class="btn primary" type="button">Open worksheet preview in new tab</button>
+          <button id="downloadWorksheet" class="btn success" type="button">Download worksheet HTML</button>
+        </div>
+        <p class="small-note">Downloaded worksheet embeds the workspace images so coordinate planes/grids travel with the file.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="data/catalog_index.js"></script>
+  <script src="data/lesson_1_1_1.js"></script>
+  <script src="data/lesson_1_1_2.js"></script>
+  <script src="data/lesson_1_1_3.js"></script>
+  <script src="data/lesson_1_1_4.js"></script>
+  <script src="data/lesson_1_1_5.js"></script>
+  <script src="data/lesson_1_2_1.js"></script>
+  <script src="data/lesson_1_2_2.js"></script>
+  <script src="data/lesson_1_2_3.js"></script>
+  <script src="data/lesson_1_2_4.js"></script>
+  <script src="data/chapter_1_closure.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

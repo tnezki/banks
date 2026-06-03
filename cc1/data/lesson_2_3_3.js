@@ -1,0 +1,275 @@
+window.CC1_LESSONS = window.CC1_LESSONS || {};
+window.CC1_LESSONS["lesson_2_3_3"] = [
+  {
+    "id": "cc1-2-70",
+    "number": "2-70",
+    "chapter": "2",
+    "section": "2.3.3",
+    "source_type": "Lesson",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\" data-source-problem=\"2-70\" data-source-type=\"Lesson\">\n<div class=\"problem-body\">\n\n<p>There are several ways to write the dimensions of the rectangle shown below.</p>\n<ol type=\"a\">\n<li>How many ways can you write the dimensions of the generic rectangle below? Draw a new rectangle for each way.</li>\n<li>The factor on the short side of each of the rectangles you drew in part (a) had to be a factor of both $120$ and $18$. When two products share the same factor, that factor is called a <strong>common factor</strong>. What do you think is meant by the <strong>greatest common factor (GCF)</strong> of $120$ and $18$? What is the GCF for $120$ and $18$? If you need to review the meaning of a factor, see the Math Notes box in Lesson 1.2.3.</li>\n</ol>\n<div class=\"figures\"><img alt=\"Generic rectangle with 120 in the top section and 18 in the bottom section\" class=\"generic-model\" src=\"assets/lesson_2_3_3/2-70-generic-rectangle.png\"/></div>\n\n</div>\n</section>",
+    "assets": [
+      "assets/lesson_2_3_3/2-70-generic-rectangle.png"
+    ],
+    "resources": [],
+    "text_preview": "There are several ways to write the dimensions of the rectangle shown below. How many ways can you write the dimensions of the generic rectangle below? Draw a new rectangle for each way. The factor on the short side of each of the rectangles you drew in part ("
+  },
+  {
+    "id": "cc1-2-71",
+    "number": "2-71",
+    "chapter": "2",
+    "section": "2.3.3",
+    "source_type": "Lesson",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\" data-source-problem=\"2-71\" data-source-type=\"Lesson\">\n<div class=\"problem-body\">\n\n<p>In problem 2-70, the greatest common factor and its generic rectangle could be used to write a multiplication sentence with parentheses:</p>\n<p class=\"mathline\">$120 + 18 = 6(20 + 3)$</p>\n<p>For each generic rectangle below, draw as many rectangles with different dimensions as you can. Then use the greatest common factor for the numbers in each rectangle to write a multiplication sentence with parentheses.</p>\n<div class=\"figures\"><img alt=\"Generic rectangle with 40 in the top section and 32 in the bottom section\" class=\"generic-model\" src=\"assets/lesson_2_3_3/2-71-a-generic-rectangle.png\"/><img alt=\"Generic rectangle with 216 in the top section and 54 in the bottom section\" class=\"generic-model\" src=\"assets/lesson_2_3_3/2-71-b-generic-rectangle.png\"/></div>\n\n</div>\n</section>",
+    "assets": [
+      "assets/lesson_2_3_3/2-71-a-generic-rectangle.png",
+      "assets/lesson_2_3_3/2-71-b-generic-rectangle.png"
+    ],
+    "resources": [],
+    "text_preview": "In problem 2-70, the greatest common factor and its generic rectangle could be used to write a multiplication sentence with parentheses: $120 + 18 = 6(20 + 3)$ For each generic rectangle below, draw as many rectangles with different dimensions as you can. Then"
+  },
+  {
+    "id": "cc1-2-72",
+    "number": "2-72",
+    "chapter": "2",
+    "section": "2.3.3",
+    "source_type": "Lesson",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\" data-source-problem=\"2-72\" data-source-type=\"Lesson\">\n<div class=\"problem-body\">\n\n<p>Ethan thinks that $5(13)$ can be found by adding $50 + 15$.</p>\n<ol type=\"a\">\n<li>Is Ethan correct? Draw a diagram to demonstrate Ethan's idea or show where he went wrong.</li>\n<li>Write a multiplication sentence with parentheses to represent Ethan’s generic rectangle.</li>\n</ol>\n\n</div>\n</section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "Ethan thinks that $5(13)$ can be found by adding $50 + 15$. Is Ethan correct? Draw a diagram to demonstrate Ethan's idea or show where he went wrong. Write a multiplication sentence with parentheses to represent Ethan’s generic rectangle."
+  },
+  {
+    "id": "cc1-2-73",
+    "number": "2-73",
+    "chapter": "2",
+    "section": "2.3.3",
+    "source_type": "Lesson",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\" data-source-problem=\"2-73\" data-source-type=\"Lesson\">\n<div class=\"problem-body\">\n\n<p>Use Ethan’s idea to draw a generic rectangle to find each product below. Then write a multiplication sentence with parentheses for each one.</p>\n<ol class=\"threecol\" type=\"a\">\n<li>$7(1 + 11)$</li>\n<li>$5(500 + 4)$</li>\n<li>$3 \\cdot 206$</li>\n</ol>\n\n</div>\n</section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "Use Ethan’s idea to draw a generic rectangle to find each product below. Then write a multiplication sentence with parentheses for each one. $7(1 + 11)$ $5(500 + 4)$ $3 \\cdot 206$"
+  },
+  {
+    "id": "cc1-2-74",
+    "number": "2-74",
+    "chapter": "2",
+    "section": "2.3.3",
+    "source_type": "Learning Log",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\" data-source-problem=\"2-74\" data-source-type=\"Learning Log\">\n<div class=\"problem-body\">\n\n<p><strong>LEARNING LOG</strong></p>\n<p>Discuss the idea of a greatest common factor with your team. Then write a definition for greatest common factor in your Learning Log. Create your own example to help explain your definition.</p>\n<p>Title this entry <strong>“Greatest Common Factor”</strong> and include today’s date.</p>\n\n</div>\n</section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "LEARNING LOG Discuss the idea of a greatest common factor with your team. Then write a definition for greatest common factor in your Learning Log. Create your own example to help explain your definition. Title this entry “Greatest Common Factor” and include to"
+  },
+  {
+    "id": "cc1-math-note-2-3-3",
+    "number": "Math Note",
+    "chapter": "2",
+    "section": "2.3.3",
+    "source_type": "Math Note",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\" data-source-problem=\"Math Note\" data-source-type=\"Math Note\">\n<div class=\"problem-body\">\n\n<p><strong>Greatest Common Factor</strong></p>\n<p>The <strong>greatest common factor</strong> of two or more integers is the greatest positive integer that is a factor of both or all of the integers.</p>\n<p>For example, the factors of $18$ are $1$, $2$, $3$, $6$, and $18$, and the factors of $12$ are $1$, $2$, $3$, $4$, $6$, and $12$, so the greatest common factor of $12$ and $18$ is $6$.</p>\n\n</div>\n</section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "Greatest Common Factor The greatest common factor of two or more integers is the greatest positive integer that is a factor of both or all of the integers. For example, the factors of $18$ are $1$, $2$, $3$, $6$, and $18$, and the factors of $12$ are $1$, $2$,"
+  },
+  {
+    "id": "cc1-2-75",
+    "number": "2-75",
+    "chapter": "2",
+    "section": "2.3.3",
+    "source_type": "Review/Preview",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\" data-source-problem=\"2-75\" data-source-type=\"Review/Preview\">\n<div class=\"problem-body\">\n\n<p>Solve each generic-rectangle puzzle. For each part, write a multiplication sentence, as you did in problem 2-72.</p>\n<div class=\"figures\"><img alt=\"Generic rectangle puzzle with plus 4, 30, 1500, and 250 shown\" class=\"generic-model\" src=\"assets/lesson_2_3_3/2-75-a-generic-rectangle.png\"/><img alt=\"Generic rectangle puzzle with plus 7, 40, 2400, 1600, and 56 shown\" class=\"generic-model\" src=\"assets/lesson_2_3_3/2-75-b-generic-rectangle.png\"/></div>\n\n</div>\n</section>",
+    "assets": [
+      "assets/lesson_2_3_3/2-75-a-generic-rectangle.png",
+      "assets/lesson_2_3_3/2-75-b-generic-rectangle.png"
+    ],
+    "resources": [],
+    "text_preview": "Solve each generic-rectangle puzzle. For each part, write a multiplication sentence, as you did in problem 2-72."
+  },
+  {
+    "id": "cc1-2-76",
+    "number": "2-76",
+    "chapter": "2",
+    "section": "2.3.3",
+    "source_type": "Review/Preview",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\" data-source-problem=\"2-76\" data-source-type=\"Review/Preview\">\n<div class=\"problem-body\">\n\n<p>James is painting his $10$-by-$8$-foot bedroom wall that contains a $2$-by-$3$-foot window.</p>\n<ol type=\"a\">\n<li>Draw a diagram of his wall and the window.</li>\n<li>How many square feet of wall does he need to paint?</li>\n</ol>\n\n</div>\n</section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "James is painting his $10$-by-$8$-foot bedroom wall that contains a $2$-by-$3$-foot window. Draw a diagram of his wall and the window. How many square feet of wall does he need to paint?"
+  },
+  {
+    "id": "cc1-2-77",
+    "number": "2-77",
+    "chapter": "2",
+    "section": "2.3.3",
+    "source_type": "Review/Preview",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\" data-source-problem=\"2-77\" data-source-type=\"Review/Preview\">\n<div class=\"problem-body\">\n\n<p>Figure out whether each of the following pairs of fractions is a pair of equivalent fractions. Be sure to show all of your work or explain your thinking clearly.</p>\n<ol class=\"threecol\" type=\"a\">\n<li>$\\frac{1}{4}$ and $\\frac{25}{100}$</li>\n<li>$\\frac{3}{5}$ and $\\frac{12}{15}$</li>\n<li>$\\frac{4}{5}$ and $\\frac{5}{4}$</li>\n</ol>\n\n</div>\n</section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "Figure out whether each of the following pairs of fractions is a pair of equivalent fractions. Be sure to show all of your work or explain your thinking clearly. $\\frac{1}{4}$ and $\\frac{25}{100}$ $\\frac{3}{5}$ and $\\frac{12}{15}$ $\\frac{4}{5}$ and $\\frac{5}{4"
+  },
+  {
+    "id": "cc1-2-78",
+    "number": "2-78",
+    "chapter": "2",
+    "section": "2.3.3",
+    "source_type": "Review/Preview",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\" data-source-problem=\"2-78\" data-source-type=\"Review/Preview\">\n<div class=\"problem-body\">\n\n<p>Misty and Yesenia have a group of Base Ten Blocks. Misty has six more blocks than Yesenia. Yesenia’s blocks represent $17$. Together they have $22$ blocks, and the total numbers of blocks represent $85$. What blocks could each girl have? What is the value?</p>\n\n</div>\n</section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "Misty and Yesenia have a group of Base Ten Blocks. Misty has six more blocks than Yesenia. Yesenia’s blocks represent $17$. Together they have $22$ blocks, and the total numbers of blocks represent $85$. What blocks could each girl have? What is the value?"
+  },
+  {
+    "id": "cc1-2-79",
+    "number": "2-79",
+    "chapter": "2",
+    "section": "2.3.3",
+    "source_type": "Review/Preview",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\" data-source-problem=\"2-79\" data-source-type=\"Review/Preview\">\n<div class=\"problem-body\">\n\n<p><strong>COMPARING WAYS TO REPRESENT DATA.</strong></p>\n<p>Use the golf-tournament data below to complete parts (a) through (e).</p>\n<p><strong>Ages of golfers participating in a golf tournament:</strong></p>\n<div class=\"data-list\">44, 48, 40, 25, 28, 37, 29, 34, 45, 51, 43, 35, 38, 57, 50, 35, 47, 30, 63, 43, 44, 60, 46, 43, 33, 45, 42, 34, 32</div>\n<ol type=\"a\">\n<li>Use the data to create a dot plot.</li>\n<li>Why is a dot plot not the best choice for graphing this data?</li>\n<li>Create a stem-and-leaf plot for the data.</li>\n<li>Use the stem-and-leaf plot to create a histogram for the data.</li>\n<li>What range of ages do most golfers fall between? Do you see any ages that are much larger or smaller than other ages?</li>\n</ol>\n\n</div>\n</section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "COMPARING WAYS TO REPRESENT DATA. Use the golf-tournament data below to complete parts (a) through (e). Ages of golfers participating in a golf tournament: 44, 48, 40, 25, 28, 37, 29, 34, 45, 51, 43, 35, 38, 57, 50, 35, 47, 30, 63, 43, 44, 60, 46, 43, 33, 45, "
+  }
+];

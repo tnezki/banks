@@ -286,7 +286,7 @@ function populateFilterDropdowns() {
   });
   renderMultiDropdown({
     kind: 'source',
-    values: sourceTypes(),
+    values: unique(state.items.map(x => x.source_type)).sort((a,b)=>sourceOrder(a)-sourceOrder(b)),
     selected: state.selectedSources,
     allLabel: 'All types'
   });
@@ -811,27 +811,10 @@ function updateNewLivePreviewIfVisible() {
   if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([box]);
 }
 
-
-function newQuestionLessonMismatchWarning() {
-  const slug = $('newLessonSlug').value;
-  const lesson = (window.CC1_LESSONS || {})[slug] || [];
-  const sample = lesson[0] || {};
-  const expectedChapter = String(sample.chapter || '').trim();
-  const expectedSection = String(sample.section || slug.replace(/^lesson_/, '').replace(/_/g,'.')).trim();
-  const actualChapter = $('newChapter').value.trim();
-  const actualSection = $('newSection').value.trim();
-  const warnings = [];
-  if (expectedChapter && actualChapter && actualChapter !== expectedChapter) warnings.push(`chapter ${actualChapter} instead of ${expectedChapter}`);
-  if (expectedSection && actualSection && actualSection !== expectedSection) warnings.push(`section ${actualSection} instead of ${expectedSection}`);
-  if (!warnings.length) return true;
-  return confirm(`This question is being saved into ${slug}.\n\nThe form says ${warnings.join(' and ')}.\n\nContinue and save it into this lesson file anyway?`);
-}
-
 function applyNewQuestionToCatalog() {
   const slug = $('newLessonSlug').value;
   const item = buildNewQuestionItem();
   if (!slug || !item.id || !item.number) { alert('Choose a lesson file first.'); return null; }
-  if (!newQuestionLessonMismatchWarning()) return null;
   addFullItemToLesson(item, slug);
   state.activeId = item.id;
   renderList();

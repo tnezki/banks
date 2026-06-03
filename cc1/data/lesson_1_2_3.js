@@ -1,4 +1,3 @@
-window.CC1_LESSONS = window.CC1_LESSONS || {};
 window.CC1_LESSONS["lesson_1_2_3"] = [
   {
     "id": "cc1-1-62",
@@ -270,7 +269,7 @@ window.CC1_LESSONS["lesson_1_2_3"] = [
     "text_preview": "Use your knowledge of place value to place the correct inequality sign ($<$ or $>$) between each pair of numbers. $5.207$ ___ $5.27$ $3.006$ ___ $3.06$ $2.408$ ___ $2.40$ Round each number in part (b) to the nearest tenth."
   },
   {
-    "id": "cc1-math-note",
+    "id": "cc1-math-note-1-2-3",
     "number": "Math Note",
     "chapter": "1",
     "section": "1.2.3",

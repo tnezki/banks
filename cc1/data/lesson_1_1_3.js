@@ -1,4 +1,3 @@
-window.CC1_LESSONS = window.CC1_LESSONS || {};
 window.CC1_LESSONS["lesson_1_1_3"] = [
   {
     "id": "cc1-1-15",
@@ -260,7 +259,7 @@ window.CC1_LESSONS["lesson_1_1_3"] = [
     "text_preview": "Use the bar graph below to answer the following questions. How many people attended the fair on Tuesday? Which day had the largest attendance? What was the total attendance for the week?"
   },
   {
-    "id": "cc1-math-note",
+    "id": "cc1-math-note-1-1-3",
     "number": "Math Note",
     "chapter": "1",
     "section": "1.1.3",

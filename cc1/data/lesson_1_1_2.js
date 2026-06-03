@@ -1,4 +1,3 @@
-window.CC1_LESSONS = window.CC1_LESSONS || {};
 window.CC1_LESSONS["lesson_1_1_2"] = [
   {
     "id": "cc1-1-5",
@@ -356,7 +355,7 @@ window.CC1_LESSONS["lesson_1_1_2"] = [
     "text_preview": "The band students at Tolt Jr. High and Maywood Middle School have been invited to participate in the Evergreen Music Festival in Seattle. Each group has decided to have a car wash to raise money to pay for the trip. Use the graph below to answer the following "
   },
   {
-    "id": "cc1-math-note",
+    "id": "cc1-math-note-1-1-2",
     "number": "Math Note",
     "chapter": "1",
     "section": "1.1.2",

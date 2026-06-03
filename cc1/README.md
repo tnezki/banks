@@ -38,3 +38,8 @@ Update notes:
 - Download updated lesson JS saves the entire affected lesson file, such as lesson_1_2_4.js.
 - Replace the matching file in data/ on GitHub to make edits permanent.
 - Worksheet/assessment numbering should be handled later during export and can start at 1, 2, 3, etc.
+
+
+## Chapter 2 Added
+
+This build includes Chapter 1 and Chapter 2 lesson-based JS files, assets, and catalog entries. Chapter 2 was converted from verified extraction previews into lesson files.

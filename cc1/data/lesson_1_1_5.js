@@ -1,4 +1,3 @@
-window.CC1_LESSONS = window.CC1_LESSONS || {};
 window.CC1_LESSONS["lesson_1_1_5"] = [
   {
     "id": "cc1-1-33",
@@ -201,7 +200,7 @@ window.CC1_LESSONS["lesson_1_1_5"] = [
     "text_preview": "Round each number to the specified place. $33.54296$ (ten thousandth) $307{,}407$ (thousand) $285.39154$ (hundredth) $6811.09$ (ten)"
   },
   {
-    "id": "cc1-math-note",
+    "id": "cc1-math-note-1-1-5",
     "number": "Math Note",
     "chapter": "1",
     "section": "1.1.5",

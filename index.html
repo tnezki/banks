@@ -136,9 +136,55 @@
 
     .card:hover .card-arrow { color: var(--gold); }
 
+    /* ── Teacher Dashboards ── */
+    .dash-section {
+      margin-top: 52px;
+      width: 100%;
+      max-width: 780px;
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+    }
+
+    .dash-label {
+      font-family: 'Source Code Pro', monospace;
+      font-size: .68rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+      text-align: center;
+    }
+
+    .dash-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .dash-link {
+      font-family: 'Source Code Pro', monospace;
+      font-size: .75rem;
+      letter-spacing: .06em;
+      color: var(--navy);
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--navy);
+      border-radius: var(--radius);
+      padding: 8px 14px;
+      text-decoration: none;
+      transition: border-left-color .15s ease, color .15s ease, box-shadow .15s ease;
+    }
+
+    .dash-link:hover {
+      border-left-color: var(--gold);
+      color: var(--gold);
+      box-shadow: var(--shadow);
+    }
+
     /* ── Footer ── */
     footer {
-      margin-top: 52px;
+      margin-top: 28px;
       font-family: 'Source Code Pro', monospace;
       font-size: .68rem;
       letter-spacing: .1em;
@@ -207,6 +253,20 @@
     </a>
 
   </main>
+
+  <section class="dash-section">
+    <p class="dash-label">🔒 Teacher Dashboards</p>
+    <div class="dash-grid">
+      <a class="dash-link" href="https://tnezki.github.io/cc1/teacher_dashboard.html" target="_blank" rel="noopener">CC1 Dashboard</a>
+      <a class="dash-link" href="https://tnezki.github.io/cc2/teacher_dashboard.html" target="_blank" rel="noopener">CC2 Dashboard</a>
+      <a class="dash-link" href="https://tnezki.github.io/cc3/teacher_dashboard.html" target="_blank" rel="noopener">CC3 Dashboard</a>
+      <a class="dash-link" href="https://tnezki.github.io/algebra/dashboardsfdivnvoasoiflkljieuurenfal.html" target="_blank" rel="noopener">Algebra 1 Dashboard</a>
+      <a class="dash-link" href="https://tnezki.github.io/geo/teacher_dashboard.html" target="_blank" rel="noopener">Geometry Dashboard</a>
+      <a class="dash-link" href="https://tnezki.github.io/alg2/teacher_dashboard.html" target="_blank" rel="noopener">Algebra 2 Dashboard</a>
+      <a class="dash-link" href="https://tnezki.github.io/pc/bear3451mhs5155/teach1751_dashboard.html" target="_blank" rel="noopener">Precalculus Dashboard</a>
+      <a class="dash-link" href="https://tnezki.github.io/calc/tlawkus/jshsf/teacher_dashboard.html" target="_blank" rel="noopener">Calculus Dashboard</a>
+    </div>
+  </section>
 
   <footer>Manistee ISD · Assessment Banks</footer>
 

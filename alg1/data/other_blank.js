@@ -1,0 +1,67 @@
+window.A1_SECTIONS = window.A1_SECTIONS || {};
+window.A1_SECTIONS["other_blank"] = [
+  {
+    "id": "other-0019",
+    "number": "2-10",
+    "chapter": "Other",
+    "unit": "Other",
+    "section": "Other",
+    "section_number": "-",
+    "unit_section_title": "Other",
+    "source_type": "Review/Preview",
+    "original_source": "cpm-2-10",
+    "source_lesson": "2.1.1",
+    "source_file": "items_other.js",
+    "audit_status": "authoritative",
+    "notes": "Line symmetry in graphs; not a primary Algebra 1 TOC target for the catalog.",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"problem\" id=\"2-10\">\n<h2>2-10</h2>\n<div class=\"tagline\"><span class=\"pill\">Lesson</span> Sorted to Unit 2, Section 1: Linear Patterns and Starting Values</div>\n<div class=\"audit\">Audit note: Chapter 2 item sorted to Unit 2, Section 1: Linear Patterns and Starting Values. Category: Linear Patterns.</div>\n<div>\n<p>\n      Examine the graphs in problem 2-9 again. Which, if any, have lines of symmetry? Copy each graph on your paper and show any lines of symmetry.\n    </p>\n</div>\n</section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "2-10 Lesson Sorted to Unit 2, Section 1: Linear Patterns and Starting Values Audit note: Chapter 2 item sorted to Unit 2, Section 1: Linear Patterns and Starting Values. Category: Linear Patterns. Examine the graphs in problem 2-9 again. Which, if any, have li"
+  },
+  {
+    "id": "other-0020",
+    "number": "CL2-111",
+    "chapter": "Other",
+    "unit": "Other",
+    "section": "Other",
+    "section_number": "-",
+    "unit_section_title": "Other",
+    "source_type": "Closure Reflection",
+    "original_source": "cpm-CL2-111",
+    "source_lesson": "Chapter 2 Closure",
+    "source_file": "items_other.js",
+    "audit_status": "authoritative",
+    "notes": "Reflection only; not a direct mathematical content target.",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"problem\" id=\"CL2-111\"><h2>CL 2-111</h2><div class=\"tagline\"><span class=\"pill\">Closure</span> Reflection</div><div class=\"audit\">Audit note: Prompts students to reflect on confidence, difficulty, review needs, and practice needs after attempting the closure problems.</div>\n<p>Check your answers using the table at the end of the closure section. Which problems do you feel confident about? Which problems were hard? Use the table to make a list of topics you need help with and a list of topics you need to practice more.</p>\n</section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "CL 2-111 Closure Reflection Audit note: Prompts students to reflect on confidence, difficulty, review needs, and practice needs after attempting the closure problems. Check your answers using the table at the end of the closure section. Which problems do you f"
+  }
+];

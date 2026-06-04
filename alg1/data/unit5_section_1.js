@@ -1,0 +1,67 @@
+window.A1_SECTIONS = window.A1_SECTIONS || {};
+window.A1_SECTIONS["unit5_section_1"] = [
+  {
+    "id": "unit05-0001",
+    "number": "4-12",
+    "chapter": "Unit 5: Factoring and Quadratic Functions",
+    "unit": "Unit 5: Factoring and Quadratic Functions",
+    "section": "Unit 5, Section 1: Factoring Greatest Common Factors and Quadratic Structure",
+    "section_number": "1",
+    "unit_section_title": "Unit 5, Section 1: Factoring Greatest Common Factors and Quadratic Structure",
+    "source_type": "Review/Preview",
+    "original_source": "cpm-4-12",
+    "source_lesson": "4.1.1",
+    "source_file": "items_unit5.js",
+    "audit_status": "authoritative",
+    "notes": "Uses generic rectangles to connect dimensions, product form, and sum form.",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"problem\" id=\"4-12\"><h2>4-12</h2><div class=\"tagline\"><span class=\"pill\">Review/Preview</span> Sorted to Unit 5, Section 1: GCF and Structure</div><div class=\"audit\">Audit note: Uses generic rectangles to connect dimensions, product form, and sum form.</div>\n<p>For each of the following generic rectangles, find the dimensions (length and width) and write the area as the product of the dimensions and as a sum.</p>\n<img alt=\"Generic rectangles for problem 4-12\" class=\"figure figure-lg\" src=\"assets/4-12.png\"/>\n<div class=\"workspace-lg workspace\"></div>\n</section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "4-12 Review/Preview Sorted to Unit 5, Section 1: GCF and Structure Audit note: Uses generic rectangles to connect dimensions, product form, and sum form. For each of the following generic rectangles, find the dimensions (length and width) and write the area as"
+  },
+  {
+    "id": "unit05-0002",
+    "number": "4-89",
+    "chapter": "Unit 5: Factoring and Quadratic Functions",
+    "unit": "Unit 5: Factoring and Quadratic Functions",
+    "section": "Unit 5, Section 1: Factoring Greatest Common Factors and Quadratic Structure",
+    "section_number": "1",
+    "unit_section_title": "Unit 5, Section 1: Factoring Greatest Common Factors and Quadratic Structure",
+    "source_type": "Lesson",
+    "original_source": "cpm-4-89",
+    "source_lesson": "4.3.1",
+    "source_file": "items_unit5.js",
+    "audit_status": "authoritative",
+    "notes": "Complete a generic rectangle and connect area as product with area as sum; product/sum structure.",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"problem\" id=\"4-89\"><h2>4-89</h2><div class=\"tagline\"><span class=\"pill\">Lesson</span> Sorted to Unit 5, Section 1: GCF &amp; Structure</div><div class=\"audit\">Audit note: Complete a generic rectangle and connect area as product with area as sum; product/sum structure.</div>\n<p>Examine the generic rectangle below. Determine the missing attributes and then write the area as a product and as a sum.</p>\n<table class=\"response-table\" style=\"max-width:420px;\">\n<tr><th></th><th></th><th></th><th></th></tr>\n<tr><th></th><td>$2xy$</td><td></td><td></td></tr>\n<tr><th>$-3$</th><td></td><td>$-9x$</td><td></td></tr>\n<tr><th></th><th>$y$</th><th></th><th>$-5$</th></tr>\n</table>\n<div class=\"workspace-lg workspace\"></div>\n</section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "4-89 Lesson Sorted to Unit 5, Section 1: GCF & Structure Audit note: Complete a generic rectangle and connect area as product with area as sum; product/sum structure. Examine the generic rectangle below. Determine the missing attributes and then write the area"
+  }
+];

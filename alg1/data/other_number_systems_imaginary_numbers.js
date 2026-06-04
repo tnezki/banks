@@ -1,0 +1,67 @@
+window.A1_SECTIONS = window.A1_SECTIONS || {};
+window.A1_SECTIONS["other_number_systems_imaginary_numbers"] = [
+  {
+    "id": "other-0037",
+    "number": "10-76",
+    "chapter": "Other",
+    "unit": "Other",
+    "section": "Other",
+    "section_number": "Number Systems / Imaginary Numbers",
+    "unit_section_title": "Other",
+    "source_type": "Lesson",
+    "original_source": "cpm-10-76",
+    "source_lesson": "10.2.5",
+    "source_file": "items_other.js",
+    "audit_status": "authoritative",
+    "notes": "Introduces imaginary numbers through equations with no real solutions.",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"problem\" id=\"10-76\">\n<h2>10-76</h2>\n<div class=\"tagline\"><span class=\"pill\">Lesson</span> Sorted to Other: Number Systems / Imaginary Numbers</div>\n<div class=\"audit\">Audit note: Introduces imaginary numbers through quadratic equations with no real solutions and connects $i$ to $\\sqrt{-1}$.</div>\n<p><strong>Imaginary Numbers</strong></p>\n<p>Consider the quadratic equation $0=x^2+1$.</p>\n<ol class=\"lower-alpha\" type=\"a\">\n<li>Use a graph on your graphing calculator to find the solutions of $0=x^2+1$.</li>\n<li>Solve $0=x^2+1$ algebraically to confirm your answer to part (a).</li>\n<li>By the 1500s, people trying to solve equations like the ones above that did not have real solutions created a whole new set of numbers. This new set of numbers came to be called <strong>imaginary numbers</strong>. Imaginary numbers were very reluctantly accepted at first. The basic imaginary number is $\\sqrt{-1}$, which is now denoted $i$. If you have not already done so, find the two solutions of the equation of part (b). Then verify algebraically that they are both solutions to the equation $0=x^2+1$.</li>\n<li>Solve the equation $x^2+81=0$.</li>\n</ol>\n</section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "10-76 Lesson Sorted to Other: Number Systems / Imaginary Numbers Audit note: Introduces imaginary numbers through quadratic equations with no real solutions and connects $i$ to $\\sqrt{-1}$. Imaginary Numbers Consider the quadratic equation $0=x^2+1$. Use a gra"
+  },
+  {
+    "id": "other-0038",
+    "number": "CL10-151c",
+    "chapter": "Other",
+    "unit": "Other",
+    "section": "Other",
+    "section_number": "Number Systems / Imaginary Numbers",
+    "unit_section_title": "Other",
+    "source_type": "Closure",
+    "original_source": "cpm-CL10-151c",
+    "source_lesson": "Chapter 10 Closure",
+    "source_file": "items_other.js",
+    "audit_status": "authoritative",
+    "notes": "Finds imaginary roots.",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<div class=\"card\" id=\"CL10151\">\n<div class=\"problem-title\">CL 10-151</div>\n<p>For the quadratic function $f(x)=(x-3)^2+4$:</p>\n<ol type=\"a\">\n<li>Identify the vertex and tell if it is the maximum or minimum point of the function.</li>\n<li>Why does $(x-3)^2+4=0$ have no real solutions?</li>\n<li>Find the imaginary roots of the function.</li>\n</ol>\n</div>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "CL 10-151 For the quadratic function $f(x)=(x-3)^2+4$: Identify the vertex and tell if it is the maximum or minimum point of the function. Why does $(x-3)^2+4=0$ have no real solutions? Find the imaginary roots of the function."
+  }
+];

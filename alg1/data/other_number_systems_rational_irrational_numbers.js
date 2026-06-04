@@ -1,0 +1,67 @@
+window.A1_SECTIONS = window.A1_SECTIONS || {};
+window.A1_SECTIONS["other_number_systems_rational_irrational_numbers"] = [
+  {
+    "id": "other-0039",
+    "number": "10-79",
+    "chapter": "Other",
+    "unit": "Other",
+    "section": "Other",
+    "section_number": "Number Systems / Rational & Irrational Numbers",
+    "unit_section_title": "Other",
+    "source_type": "Lesson",
+    "original_source": "cpm-10-79",
+    "source_lesson": "10.2.5",
+    "source_file": "items_other.js",
+    "audit_status": "authoritative",
+    "notes": "Investigates closure and rational/irrational classification.",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"problem\" id=\"10-79\">\n<h2>10-79</h2>\n<div class=\"tagline\"><span class=\"pill\">Lesson</span> Sorted to Other: Number Systems / Rational and Irrational Numbers</div>\n<div class=\"audit\">Audit note: Explores closure of rational numbers and the results of combining rational and irrational numbers.</div>\n<p><strong>Combining Rational and Irrational Numbers</strong></p>\n<p>In Chapter 3, you determined that the integers are a closed set under multiplication and addition.</p>\n<ol class=\"lower-alpha\" type=\"a\">\n<li>Are the rational numbers a closed set under multiplication and addition? That is, is a rational number times a rational number always a rational number? What about a rational number plus a rational number?</li>\n<li>What is the area and perimeter of the triangle below? Give both an exact answer and a decimal approximation.\n  <div class=\"visual-row\">\n<svg aria-label=\"Right triangle with legs one eighth and square root of three over eight, and hypotenuse two eighths.\" class=\"triangle-sketch\" role=\"img\" viewbox=\"0 0 230 170\">\n<polygon fill=\"#f8fafc\" points=\"40,130 190,130 40,30\" stroke=\"#334155\" stroke-width=\"3\"></polygon>\n<path d=\"M40 115 L55 115 L55 130\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"></path>\n<text font-size=\"16\" text-anchor=\"middle\" x=\"105\" y=\"150\">1/8</text>\n<text font-size=\"16\" text-anchor=\"middle\" transform=\"rotate(-90 21 84)\" x=\"21\" y=\"84\">sqrt(3)/8</text>\n<text font-size=\"16\" text-anchor=\"middle\" transform=\"rotate(-34 128 74)\" x=\"128\" y=\"74\">2/8</text>\n</svg>\n</div>\n</li>\n<li>In part (b) you added a rational number to an irrational number to find the perimeter. Was your result rational or irrational? How do you know?<br/><br/>If you add any rational number to any irrational number, will the sum always be rational, always be irrational, or sometimes be rational and sometimes be irrational? Why?</li>\n<li>If you multiply a rational number and an irrational number, will the product be rational or irrational? Why?</li>\n</ol>\n</section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "10-79 Lesson Sorted to Other: Number Systems / Rational and Irrational Numbers Audit note: Explores closure of rational numbers and the results of combining rational and irrational numbers. Combining Rational and Irrational Numbers In Chapter 3, you determined"
+  },
+  {
+    "id": "other-0040",
+    "number": "10-82",
+    "chapter": "Other",
+    "unit": "Other",
+    "section": "Other",
+    "section_number": "Number Systems / Rational & Irrational Numbers",
+    "unit_section_title": "Other",
+    "source_type": "Review/Preview",
+    "original_source": "cpm-10-82",
+    "source_lesson": "10.2.5",
+    "source_file": "items_other.js",
+    "audit_status": "authoritative",
+    "notes": "Classifies sums/products as rational or irrational.",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"problem\" id=\"10-82\">\n<h2>10-82</h2>\n<div class=\"tagline\"><span class=\"pill\">Review/Preview</span> Sorted to Other: Number Systems / Rational and Irrational Numbers</div>\n<div class=\"audit\">Audit note: Classifies sums and products involving radicals, fractions, and $\\pi$ as rational or irrational.</div>\n<p>Identify each sum or product as a rational number or an irrational number.</p>\n<div class=\"four-col\"><div><ol class=\"lower-alpha\" type=\"a\"><li>$\\sqrt{9}+\\frac{5}{17}$</li></ol></div><div><ol class=\"lower-alpha\" start=\"2\" type=\"a\"><li>$\\frac{2}{3}+\\pi$</li></ol></div><div><ol class=\"lower-alpha\" start=\"3\" type=\"a\"><li>$5\\cdot\\sqrt{11}$</li></ol></div><div><ol class=\"lower-alpha\" start=\"4\" type=\"a\"><li>$\\sqrt{12}\\cdot\\sqrt{3}$</li></ol></div></div>\n</section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "10-82 Review/Preview Sorted to Other: Number Systems / Rational and Irrational Numbers Audit note: Classifies sums and products involving radicals, fractions, and $\\pi$ as rational or irrational. Identify each sum or product as a rational number or an irration"
+  }
+];

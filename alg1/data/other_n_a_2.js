@@ -1,0 +1,67 @@
+window.A1_SECTIONS = window.A1_SECTIONS || {};
+window.A1_SECTIONS["other_n_a_2"] = [
+  {
+    "id": "other-0034",
+    "number": "CL5-133",
+    "chapter": "Other",
+    "unit": "Other",
+    "section": "Other: Chapter Reflection / Reflection / Self-Assessment",
+    "section_number": "N/A",
+    "unit_section_title": "Other: Chapter Reflection / Reflection / Self-Assessment",
+    "source_type": "Closure Reflection",
+    "original_source": "cpm-CL5-133",
+    "source_lesson": "Chapter 5 Closure",
+    "source_file": "items_other.js",
+    "audit_status": "authoritative",
+    "notes": "Metacognitive reflection/self-assessment item rather than mathematical content.",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<div class=\"card\">\n<div class=\"problem-title\">CL 5-133</div>\n<p>Check your answers using the table at the end of this section. Which problems do you feel confident about? Which problems were hard? Have you worked on problems like these in previous math classes? Use the table to make a list of topics you need to learn more about, and a list of topics you just need to practice more.</p>\n</div>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "CL 5-133 Check your answers using the table at the end of this section. Which problems do you feel confident about? Which problems were hard? Have you worked on problems like these in previous math classes? Use the table to make a list of topics you need to le"
+  },
+  {
+    "id": "other-0035",
+    "number": "CL6-132",
+    "chapter": "Other",
+    "unit": "Other",
+    "section": "Other: Chapter Reflection / Reflection / Self-Assessment",
+    "section_number": "N/A",
+    "unit_section_title": "Other: Chapter Reflection / Reflection / Self-Assessment",
+    "source_type": "Closure Reflection",
+    "original_source": "cpm-CL6-132",
+    "source_lesson": "Chapter 6 Closure",
+    "source_file": "items_other.js",
+    "audit_status": "authoritative",
+    "notes": "Metacognitive self-assessment; not a mathematical content placement.",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<div class=\"card problem\" id=\"CL6-132\">\n<div class=\"problem-title\">CL 6-132</div>\n<p>Check your answers using the table at the end of the closure section. Which problems do you feel confident about? Which problems were hard? Use the table to make a list of topics you need help on and a list of topics you need to practice more.</p>\n</div>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "CL 6-132 Check your answers using the table at the end of the closure section. Which problems do you feel confident about? Which problems were hard? Use the table to make a list of topics you need help on and a list of topics you need to practice more."
+  }
+];

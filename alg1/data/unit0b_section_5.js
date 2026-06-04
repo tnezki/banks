@@ -1,0 +1,177 @@
+window.A1_SECTIONS = window.A1_SECTIONS || {};
+window.A1_SECTIONS["unit0b_section_5"] = [
+  {
+    "id": "unit0B-0026",
+    "number": "2-5",
+    "chapter": "Unit 0B: Functions and Linear Readiness",
+    "unit": "Unit 0B: Functions and Linear Readiness",
+    "section": "Unit 0B, Section 5: Comparing Representations",
+    "section_number": "5",
+    "unit_section_title": "Unit 0B, Section 5: Comparing Representations",
+    "source_type": "Lesson",
+    "original_source": "cpm-2-5",
+    "source_lesson": "2.1.1",
+    "source_file": "items_unit0b.js",
+    "audit_status": "authoritative",
+    "notes": "Compares tile pattern, equation, and table for similar/different linear patterns.",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"problem\" id=\"2-5\">\n<h2>2-5</h2>\n<div class=\"tagline\"><span class=\"pill\">Lesson</span> Sorted to Unit 2, Section 1: Linear Patterns and Starting Values</div>\n<div class=\"audit\">Audit note: Chapter 2 item sorted to Unit 2, Section 1: Linear Patterns and Starting Values. Category: Linear Patterns..</div>\n<div>\n<p>\n      Now consider Tile Pattern D, shown below and on the Lesson 2.1.1B Resource Page.\n     Use the <a class=\"etool-link\" href=\"http://pdfs.cpm.org/stuRes/CCA/chapter_02/CCA%20Lesson%202.1.1B%20RP.pdf\" rel=\"noopener\" target=\"_blank\">Lesson 2.1.1B Resource Page</a> or the <a class=\"etool-link\" href=\"https://technology.cpm.org/general/tiles/?tiledata=adCCA%202-5%20Student%20eTool__a.%20Draw%20Figures%200%20and%204%20for%20this%20pattern%20on%20the%20resource%20page.%20%20%0A%0Ab.%20Write%20an%20equation%20for%20the%20number%20of%20tiles%20in%20this%20pattern.%20%20Use%20color%20to%20show%20where%20the%20numbers%20in%20your%20equation%20appear%20in%20the%20tile%20pattern.%20%20Use%20x%20for%20the%20figure%20number%20and%20y%20for%20the%20number%20of%20tiles%20in%20the%20figure.%0A%0Ac.%20Make%20a%20table%20for%20the%20equation%20you%20wrote%20in%20part%20(b).%20%20Does%20the%20information%20in%20your%20table%20match%20the%20figures%20in%20the%20tile%20pattern%3F%0A%0Ad.%20What%20is%20the%20same%20about%20this%20pattern%20and%20Pattern%20C%3F%20%20What%20is%20different%3F%20%20What%20would%20those%20similarities%20and%20differences%20look%20like%20in%20a%20tile%20pattern%3F%20%20%0A%20%0Ae.%20What%20do%20the%20similarities%20and%20differences%20in%20part%20(d)%20look%20like%20in%20the%20equations%3F%20%20%20%0A%0Af.%20What%20do%20the%20similarities%20and%20differences%20look%20like%20in%20the%20table%3F%20__gba2x__boy__aenoWsKqienoWtIqienoWsKrgenoWtIrgenoWv6qienoWw4qienoWw4rgenoWv6rgenoWqOtIenoWqOuGenoWrMtIhFFigure%200__p.rhenoWrguaenoWtcqOenoWwCqOenoWvEpQenoWxApQenoWxArMenoWvErMenoWseu8enoWsKvEenoWsetcenoWsKsKenoWqitcenoWpQsKenoWqiu8enoWpQvEenoWrMuGhFFigure%201__sYrThFFigure%204__v+xFhFFigure%203__q+vFhFFigure%202__wir1\" rel=\"noopener\" target=\"_blank\">2-5 Student eTool</a> as needed.</p>\n<img alt=\"Tile Pattern D, Figures 1, 2, and 3\" class=\"figure figure-xl\" src=\"assets/2-5.png\"/>\n<ol type=\"a\">\n<li>Draw Figures 0 and 4 for this pattern on the resource page.</li>\n<li>Write an equation for the number of tiles in this pattern. Use color to show where the numbers in your equation appear in the tile pattern. Use $x$ for the figure number, and $y$ for the number of tiles in the figure.</li>\n<li>Make a table for the equation you wrote in part (b). Does the information in your table match the diagrams from part (a)?</li>\n<li>What is the same about this pattern and Pattern C? What is different? What would those similarities and differences look like in a tile pattern?</li>\n<li>What do the similarities and differences in part (d) look like in the equations?</li>\n<li>What do the similarities and differences look like in the table?</li>\n</ol>\n</div>\n</section>",
+    "assets": [],
+    "resources": [
+      {
+        "label": "Lesson 2.1.1B Resource Page",
+        "url": "http://pdfs.cpm.org/stuRes/CCA/chapter_02/CCA%20Lesson%202.1.1B%20RP.pdf"
+      },
+      {
+        "label": "2-5 Student eTool",
+        "url": "https://technology.cpm.org/general/tiles/?tiledata=adCCA%202-5%20Student%20eTool__a.%20Draw%20Figures%200%20and%204%20for%20this%20pattern%20on%20the%20resource%20page.%20%20%0A%0Ab.%20Write%20an%20equation%20for%20the%20number%20of%20tiles%20in%20this%20pattern.%20%20Use%20color%20to%20show%20where%20the%20numbers%20in%20your%20equation%20appear%20in%20the%20tile%20pattern.%20%20Use%20x%20for%20the%20figure%20number%20and%20y%20for%20the%20number%20of%20tiles%20in%20the%20figure.%0A%0Ac.%20Make%20a%20table%20for%20the%20equation%20you%20wrote%20in%20part%20(b).%20%20Does%20the%20information%20in%20your%20table%20match%20the%20figures%20in%20the%20tile%20pattern%3F%0A%0Ad.%20What%20is%20the%20same%20about%20this%20pattern%20and%20Pattern%20C%3F%20%20What%20is%20different%3F%20%20What%20would%20those%20similarities%20and%20differences%20look%20like%20in%20a%20tile%20pattern%3F%20%20%0A%20%0Ae.%20What%20do%20the%20similarities%20and%20differences%20in%20part%20(d)%20look%20like%20in%20the%20equations%3F%20%20%20%0A%0Af.%20What%20do%20the%20similarities%20and%20differences%20look%20like%20in%20the%20table%3F%20__gba2x__boy__aenoWsKqienoWtIqienoWsKrgenoWtIrgenoWv6qienoWw4qienoWw4rgenoWv6rgenoWqOtIenoWqOuGenoWrMtIhFFigure%200__p.rhenoWrguaenoWtcqOenoWwCqOenoWvEpQenoWxApQenoWxArMenoWvErMenoWseu8enoWsKvEenoWsetcenoWsKsKenoWqitcenoWpQsKenoWqiu8enoWpQvEenoWrMuGhFFigure%201__sYrThFFigure%204__v+xFhFFigure%203__q+vFhFFigure%202__wir1"
+      }
+    ],
+    "text_preview": "2-5 Lesson Sorted to Unit 2, Section 1: Linear Patterns and Starting Values Audit note: Chapter 2 item sorted to Unit 2, Section 1: Linear Patterns and Starting Values. Category: Linear Patterns.. Now consider Tile Pattern D, shown below and on the Lesson 2.1."
+  },
+  {
+    "id": "unit0B-0027",
+    "number": "2-13",
+    "chapter": "Unit 0B: Functions and Linear Readiness",
+    "unit": "Unit 0B: Functions and Linear Readiness",
+    "section": "Unit 0B, Section 5: Comparing Representations",
+    "section_number": "5",
+    "unit_section_title": "Unit 0B, Section 5: Comparing Representations",
+    "source_type": "Lesson",
+    "original_source": "cpm-2-13",
+    "source_lesson": "2.1.2",
+    "source_file": "items_unit0b.js",
+    "audit_status": "authoritative",
+    "notes": "Connect tile-pattern growth, graph, equation, and function notation across representations.",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"problem\" id=\"2-13\">\n<h2>2-13</h2><div class=\"tagline\"><span class=\"pill\">Lesson</span> Sorted to Unit 2, Section 1: Slope and Rate of Change</div><div class=\"audit\">Audit note: Chapter 2 item sorted to Unit 2, Section 1: Slope and Rate of Change. Category: Linear Relationships.</div>\n<p>For each of the graphs below:</p>\n<ul>\n<li>Describe how the pattern grows and how many tiles are in Figure 0. $x$ represents the figure number, and $y$ represents the number of tiles in the figure.</li>\n<li>Write an equation that relates the figure number, $x$, to the number of tiles, $y$.</li>\n<li>Decide if the graph represents a function. If so, write the equation using function notation. If not, explain why the graph does not represent a function.</li>\n</ul>\n<img alt=\"Three linear graphs labeled a, b, and c\" class=\"figure figure-xl\" src=\"assets/2-13.png\"/>\n</section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "2-13 Lesson Sorted to Unit 2, Section 1: Slope and Rate of Change Audit note: Chapter 2 item sorted to Unit 2, Section 1: Slope and Rate of Change. Category: Linear Relationships. For each of the graphs below: Describe how the pattern grows and how many tiles "
+  },
+  {
+    "id": "unit0B-0028",
+    "number": "2-34",
+    "chapter": "Unit 0B: Functions and Linear Readiness",
+    "unit": "Unit 0B: Functions and Linear Readiness",
+    "section": "Unit 0B, Section 5: Comparing Representations",
+    "section_number": "5",
+    "unit_section_title": "Unit 0B, Section 5: Comparing Representations",
+    "source_type": "Review/Preview",
+    "original_source": "cpm-2-34",
+    "source_lesson": "2.1.3",
+    "source_file": "items_unit0b.js",
+    "audit_status": "authoritative",
+    "notes": "Translate an equation into a possible tile-pattern representation.",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"problem\" id=\"2-34\">\n<h2>2-34</h2><div class=\"tagline\"><span class=\"pill\">Lesson</span> Sorted to Unit 2, Section 1: Slope and Rate of Change</div><div class=\"audit\">Audit note: Chapter 2 item sorted to Unit 2, Section 1: Slope and Rate of Change. Category: Linear Relationships. Added 1 resource/eTool link(s).</div>\n<p>\n      Draw Figures 1, 2, and 3 for a tile pattern that could be described by $y=-3x+10$.\n     Use the <a class=\"etool-link\" href=\"https://technology.cpm.org/general/tiles/?tiledata=ahCCA%202-34%20HW%20eTool__2-34.%20Draw%20Figures%201%2C%202%2C%20and%203%20for%20a%20tile%20pattern%20that%20could%20be%20described%20by%20y%20%3D%20%E2%88%923x%20%2B%2010.__fXa2x__boy__ahFFigure%201__qisfhFFigure%202__vEsehFFigure%203__sLv6\" rel=\"noopener\" target=\"_blank\">2-34 HW eTool</a> as needed.</p>\n<div class=\"workspace workspace-md\"></div>\n</section>",
+    "assets": [],
+    "resources": [
+      {
+        "label": "2-34 HW eTool",
+        "url": "https://technology.cpm.org/general/tiles/?tiledata=ahCCA%202-34%20HW%20eTool__2-34.%20Draw%20Figures%201%2C%202%2C%20and%203%20for%20a%20tile%20pattern%20that%20could%20be%20described%20by%20y%20%3D%20%E2%88%923x%20%2B%2010.__fXa2x__boy__ahFFigure%201__qisfhFFigure%202__vEsehFFigure%203__sLv6"
+      }
+    ],
+    "text_preview": "2-34 Lesson Sorted to Unit 2, Section 1: Slope and Rate of Change Audit note: Chapter 2 item sorted to Unit 2, Section 1: Slope and Rate of Change. Category: Linear Relationships. Added 1 resource/eTool link(s). Draw Figures 1, 2, and 3 for a tile pattern that"
+  },
+  {
+    "id": "unit0B-0029",
+    "number": "2-48",
+    "chapter": "Unit 0B: Functions and Linear Readiness",
+    "unit": "Unit 0B: Functions and Linear Readiness",
+    "section": "Unit 0B, Section 5: Comparing Representations",
+    "section_number": "5",
+    "unit_section_title": "Unit 0B, Section 5: Comparing Representations",
+    "source_type": "Review/Preview",
+    "original_source": "cpm-2-48",
+    "source_lesson": "2.2.1",
+    "source_file": "items_unit0b.js",
+    "audit_status": "authoritative",
+    "notes": "Use tile-pattern graph to find growth, starting value, equation, and compare slope changes.",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"problem\" id=\"2-48\">\n<h2>2-48</h2><div class=\"tagline\"><span class=\"pill\">Review/Preview</span> Sorted to Unit 2, Section 4: Solving and Checking Linear Relationships</div><div class=\"audit\">Audit note: Practices linear relationships using the representation or skill named in the problem.</div>\n<p>\n      The graph below represents the number of tiles in a tile pattern.\n    </p>\n<img alt=\"Graph representing the number of tiles in a tile pattern\" class=\"figure-img\" src=\"assets/2-48.png\"/>\n<ol type=\"a\">\n<li>Based on the information in the graph, how many tiles are being added each time, that is, what is the slope of the line? Pay close attention to the scale of the axes.</li>\n<li>How many tiles are in Figure 0?</li>\n<li>Write the equation for the tile pattern.</li>\n<li>How would the line change if the pattern grew by $12$ tiles each time instead?</li>\n</ol>\n</section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "2-48 Review/Preview Sorted to Unit 2, Section 4: Solving and Checking Linear Relationships Audit note: Practices linear relationships using the representation or skill named in the problem. The graph below represents the number of tiles in a tile pattern. Base"
+  },
+  {
+    "id": "unit0B-0030",
+    "number": "2-67",
+    "chapter": "Unit 0B: Functions and Linear Readiness",
+    "unit": "Unit 0B: Functions and Linear Readiness",
+    "section": "Unit 0B, Section 5: Comparing Representations",
+    "section_number": "5",
+    "unit_section_title": "Unit 0B, Section 5: Comparing Representations",
+    "source_type": "Review/Preview",
+    "original_source": "cpm-2-67",
+    "source_lesson": "2.2.2",
+    "source_file": "items_unit0b.js",
+    "audit_status": "authoritative",
+    "notes": "Determine growth and starting value from several tile-pattern representations.",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"problem\" id=\"2-67\"><h2>2-67</h2><div class=\"tagline\"><span class=\"pill\">Review/Preview</span> Sorted to Unit 2, Section 5: Multiple Representations of Linear Functions</div><div class=\"audit\">Audit note: Reviews tile-pattern growth and starting value using visual representations.</div>\n<p>Each part (a) through (d) below represents a different tile pattern. For each one, determine how the pattern is growing and the number of tiles in Figure 0.</p>\n<img alt=\"Four tile pattern representations\" class=\"figure-img wide-figure\" src=\"assets/2-67.png\"/>\n</section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "2-67 Review/Preview Sorted to Unit 2, Section 5: Multiple Representations of Linear Functions Audit note: Reviews tile-pattern growth and starting value using visual representations. Each part (a) through (d) below represents a different tile pattern. For each"
+  }
+];

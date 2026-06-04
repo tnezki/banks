@@ -1,0 +1,40 @@
+{
+  "total_catalog_items": 464,
+  "chapter_counts_added": {
+    "3": 152,
+    "4": 99
+  },
+  "source_counts_added": {
+    "Closure": 19,
+    "Lesson": 107,
+    "Learning Log": 9,
+    "Math Note": 16,
+    "Review/Preview": 98,
+    "Checkpoint": 2
+  },
+  "lesson_counts_added": {
+    "chapter_3_closure": 10,
+    "chapter_4_closure": 9,
+    "lesson_3_1_1": 22,
+    "lesson_3_1_2": 15,
+    "lesson_3_1_3": 20,
+    "lesson_3_1_4": 13,
+    "lesson_3_1_5": 12,
+    "lesson_3_1_6": 12,
+    "lesson_3_2_1": 11,
+    "lesson_3_2_2": 13,
+    "lesson_3_2_3": 13,
+    "lesson_3_2_4": 11,
+    "lesson_4_1_1": 12,
+    "lesson_4_1_2": 10,
+    "lesson_4_1_3": 24,
+    "lesson_4_2_1": 9,
+    "lesson_4_2_2": 12,
+    "lesson_4_2_3": 12,
+    "lesson_4_2_4": 11
+  },
+  "duplicate_ids": [],
+  "missing_images": [],
+  "leftover_figures_refs": [],
+  "mathjax_danger_hits": []
+}

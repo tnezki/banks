@@ -1,0 +1,276 @@
+window.CC1_LESSONS = window.CC1_LESSONS || {};
+window.CC1_LESSONS["lesson_4_2_4"] = [
+  {
+    "id": "cc1-4-75",
+    "number": "4-75",
+    "chapter": "4",
+    "section": "4.2.4",
+    "source_type": "Lesson",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\"><div class=\"problem-body\">\n<p>Katura was making berry drink from a bag of powdered mix. The directions said to use $5$ scoops of the powder for every $8$ cups of water. Her pitcher holds $12$ cups of water.</p>\n<ol type=\"a\">\n<li>What is the ratio of powder to water in the directions?</li>\n<li>Work with your team to figure out how much powder Katura needs to mix with $12$ cups of water. Try to find more than one way to describe or show how you know that your answer makes sense. Be prepared to explain your ideas to the class.</li>\n<li>What is the ratio of powder to water in Katura's pitcher? How does this compare to the ratio in the directions?</li>\n</ol>\n</div></section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "Katura was making berry drink from a bag of powdered mix. The directions said to use $5$ scoops of the powder for every $8$ cups of water. Her pitcher holds $12$ cups of water. What is the ratio of powder to water in the directions? Work with your team to figu"
+  },
+  {
+    "id": "cc1-4-76",
+    "number": "4-76",
+    "chapter": "4",
+    "section": "4.2.4",
+    "source_type": "Lesson",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\"><div class=\"problem-body\">\n<p><strong>ON THE TRAIL AGAIN</strong></p>\n<p>Ms. Hartley's students were working with their mix of raisins and peanuts from Chapters 1 and 2. The class found that $30\\%$ of the mix was raisins. Sophie was working with a sample from the mix and counted $42$ peanuts in it.</p>\n<p>Sophie had just poured her sample back into the jar, when she realized that she had counted the wrong thing! Her teacher wanted to know how many <em>raisins</em> were in the sample, not <em>peanuts</em>! Work with your team and use the questions below to help Sophie figure out a reasonable estimate of how many raisins were in her sample.</p>\n<ol type=\"a\">\n<li>Sophie knows that $30\\%$ is the same as $\\frac{30}{100}$. Can this be thought of as a ratio? Which two quantities are being compared in this case? Can you write another equivalent ratio representing the same comparison?</li>\n<li>Could Sophie write a ratio comparing the number of raisins to peanuts? How could you figure out this ratio without having to count the peanuts? Discuss this with your team and be ready to explain your thinking to the class.</li>\n<li>Find an equivalent ratio that will help Sophie figure out how many raisins should have been in her sample that contained $42$ peanuts.</li>\n</ol>\n</div></section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "ON THE TRAIL AGAIN Ms. Hartley's students were working with their mix of raisins and peanuts from Chapters 1 and 2. The class found that $30\\%$ of the mix was raisins. Sophie was working with a sample from the mix and counted $42$ peanuts in it. Sophie had jus"
+  },
+  {
+    "id": "cc1-4-77",
+    "number": "4-77",
+    "chapter": "4",
+    "section": "4.2.4",
+    "source_type": "Lesson",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\"><div class=\"problem-body\">\n<p>Nicci is setting up a carnival machine with $3$ teddy bears, $7$ stuffed frogs, $3$ rubber duckies, and $2$ stuffed dinosaurs.</p>\n<ol type=\"a\">\n<li>Find the following ratios for Nicci's machine:\n        <ol type=\"i\">\n<li>The number of teddy bears to total prizes.</li>\n<li>The number of teddy bears to the number of stuffed dinosaurs.</li>\n<li>The number of teddy bears to the combined number of other prizes.</li>\n</ol>\n</li>\n<li>In the carnival game, one prize is chosen at random. Nicci's teacher told her that the probability of randomly picking a teddy bear was $20\\%$. Which of the ratios in part (a) do you think her teacher used to find the probability?</li>\n<li>Nicci is setting up a different machine that holds $60$ total prizes. The machine will have the same ratios for each kind of prize as her first machine. If the new machine has $12$ teddy bears, will the chances of randomly picking a teddy bear be the same as for her original machine? Explain.</li>\n</ol>\n</div></section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "Nicci is setting up a carnival machine with $3$ teddy bears, $7$ stuffed frogs, $3$ rubber duckies, and $2$ stuffed dinosaurs. Find the following ratios for Nicci's machine: The number of teddy bears to total prizes. The number of teddy bears to the number of "
+  },
+  {
+    "id": "cc1-4-78",
+    "number": "4-78",
+    "chapter": "4",
+    "section": "4.2.4",
+    "source_type": "Lesson",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\"><div class=\"problem-body\">\n<p>Trei correctly spelled $60\\%$ of the words on her last spelling test!</p>\n<ol type=\"a\">\n<li>How many words did she spell correctly for each word that she spelled wrong? That is, what is her ratio of correctly to incorrectly spelled words?</li>\n<li>Luis spelled $3$ words correctly for every $1$ that he spelled incorrectly. Did Luis do better than Trei on the test? What is Luis's score represented as a percent?</li>\n</ol>\n</div></section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "Trei correctly spelled $60\\%$ of the words on her last spelling test! How many words did she spell correctly for each word that she spelled wrong? That is, what is her ratio of correctly to incorrectly spelled words? Luis spelled $3$ words correctly for every "
+  },
+  {
+    "id": "cc1-4-79",
+    "number": "4-79",
+    "chapter": "4",
+    "section": "4.2.4",
+    "source_type": "Lesson",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\"><div class=\"problem-body\">\n<p><strong>Additional Challenge:</strong> A box is filled with green marbles, red marbles, and blue marbles. The ratio of red marbles to green marbles is $3:1$. The ratio of green marbles to all of the marbles in the box is $2:11$. Write each of the following ratios.</p>\n<ol type=\"a\">\n<li>The ratio of red marbles to the total number of marbles.</li>\n<li>The ratio of blue marbles to the total number of marbles.</li>\n<li>The ratio of blue marbles to green marbles.</li>\n<li>The ratio of red marbles to blue marbles.</li>\n</ol>\n</div></section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "Additional Challenge: A box is filled with green marbles, red marbles, and blue marbles. The ratio of red marbles to green marbles is $3:1$. The ratio of green marbles to all of the marbles in the box is $2:11$. Write each of the following ratios. The ratio of"
+  },
+  {
+    "id": "cc1-math-note-4-2-4",
+    "number": "Math Note",
+    "chapter": "4",
+    "section": "4.2.4",
+    "source_type": "Math Note",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\"><div class=\"problem-body\">\n<p><strong>MATH NOTES: Ratios</strong></p>\n<p>A <strong>ratio</strong> is a comparison of two numbers, often written as a quotient; that is, the first number is divided by the second number (but not zero). A ratio can be written in words, in fraction form, or with colon notation. Most often, in this class, you will either write ratios in the form of fractions or state the ratios in words.</p>\n<p>For example, if there are $38$ students in the school band and $16$ of them are boys, we can write the ratio of the number of boys to the number of girls as:</p>\n<ul>\n<li>$16$ boys to $22$ girls</li>\n<li>$\\frac{16\\text{ boys}}{22\\text{ girls}}$</li>\n<li>$16$ boys : $22$ girls</li>\n</ul>\n</div></section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "MATH NOTES: Ratios A ratio is a comparison of two numbers, often written as a quotient; that is, the first number is divided by the second number (but not zero). A ratio can be written in words, in fraction form, or with colon notation. Most often, in this cla"
+  },
+  {
+    "id": "cc1-4-80",
+    "number": "4-80",
+    "chapter": "4",
+    "section": "4.2.4",
+    "source_type": "Review/Preview",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\"><div class=\"problem-body\">\n<p>Richie and Bethany play basketball and practice shooting free throws after school. During one practice session, Richie attempted $15$ free throws and made $12$ of them.</p>\n<ol type=\"a\">\n<li>Write a ratio comparing the number of free throws he made to the number that he missed.</li>\n<li>Bethany made eight free throws for every three that she missed. Did Bethany do better than Richie? Show how you know.</li>\n</ol>\n</div></section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "Richie and Bethany play basketball and practice shooting free throws after school. During one practice session, Richie attempted $15$ free throws and made $12$ of them. Write a ratio comparing the number of free throws he made to the number that he missed. Bet"
+  },
+  {
+    "id": "cc1-4-81",
+    "number": "4-81",
+    "chapter": "4",
+    "section": "4.2.4",
+    "source_type": "Checkpoint",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\"><div class=\"problem-body\">\n<p>This problem is a checkpoint for addition and subtraction of mixed numbers. It will be referred to as <strong>Checkpoint 4</strong>.</p>\n<p>Compute each sum or difference. Simplify if possible.</p>\n<ol class=\"twocol\" type=\"a\">\n<li>$5\\frac{1}{2}+4\\frac{2}{3}$</li>\n<li>$1\\frac{5}{6}+2\\frac{1}{5}$</li>\n<li>$9\\frac{1}{3}-4\\frac{1}{5}$</li>\n<li>$10-8\\frac{2}{3}$</li>\n</ol>\n<p>Check your answers by referring to the Checkpoint 4 materials located at the back of your book.</p>\n<p>Ideally, at this point you are comfortable working with these types of problems and can solve them correctly. If you feel that you need more confidence when solving these types of problems, then review the Checkpoint 4 materials and try the practice problems provided. From this point on, you will be expected to do problems like these correctly and with confidence.</p>\n<div class=\"resources\"><strong>Resources:</strong> <a href=\"https://ebooks.cpm.org/bookdb.php?title=cc1&amp;name=reference.checkpoints&amp;type=tcheckpoints&amp;section=4\" rel=\"noopener\" target=\"_blank\">Checkpoint 4: Addition and Subtraction of Mixed Numbers</a></div>\n</div></section>",
+    "assets": [],
+    "resources": [
+      {
+        "label": "Checkpoint 4: Addition and Subtraction of Mixed Numbers",
+        "url": "https://ebooks.cpm.org/bookdb.php?title=cc1&name=reference.checkpoints&type=tcheckpoints&section=4"
+      }
+    ],
+    "text_preview": "This problem is a checkpoint for addition and subtraction of mixed numbers. It will be referred to as Checkpoint 4 . Compute each sum or difference. Simplify if possible. $5\\frac{1}{2}+4\\frac{2}{3}$ $1\\frac{5}{6}+2\\frac{1}{5}$ $9\\frac{1}{3}-4\\frac{1}{5}$ $10-8"
+  },
+  {
+    "id": "cc1-4-82",
+    "number": "4-82",
+    "chapter": "4",
+    "section": "4.2.4",
+    "source_type": "Review/Preview",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\"><div class=\"problem-body\">\n<p>Use an algebraic expression to represent each sequence of lengths shown below.</p>\n<ol class=\"image-list\" type=\"a\">\n<li><br/><img alt=\"Line segment sequence for problem 4-82(a)\" src=\"assets/lesson_4_2_4/4-82-a-line-segment.png\"/></li>\n<li><br/><img alt=\"Line segment sequence for problem 4-82(b)\" src=\"assets/lesson_4_2_4/4-82-b-line-segment.png\"/></li>\n<li><br/><img alt=\"Line segment sequence for problem 4-82(c)\" src=\"assets/lesson_4_2_4/4-82-c-line-segment.png\"/></li>\n</ol>\n</div></section>",
+    "assets": [
+      "assets/lesson_4_2_4/4-82-a-line-segment.png",
+      "assets/lesson_4_2_4/4-82-b-line-segment.png",
+      "assets/lesson_4_2_4/4-82-c-line-segment.png"
+    ],
+    "resources": [],
+    "text_preview": "Use an algebraic expression to represent each sequence of lengths shown below."
+  },
+  {
+    "id": "cc1-4-83",
+    "number": "4-83",
+    "chapter": "4",
+    "section": "4.2.4",
+    "source_type": "Review/Preview",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\"><div class=\"problem-body\">\n<p>In parts (a) through (c) below, refer to the previous problem. You will find the length of the line segments in problem 4-82 by substituting given values for the variables. For example, if $x$ is $3$ units in part (a) of problem 4-82, the line segment would be $3+1+3=7$ units long.</p>\n<ol type=\"a\">\n<li>Find the length of the line segment in part (a) of problem 4-82 using $x=4\\frac{1}{2}$.</li>\n<li>Find the length of the line segment in part (b) of problem 4-82 using $m=4$.</li>\n<li>Find the length of the line segment in part (c) of problem 4-82 using $y=5.5$.</li>\n</ol>\n</div></section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "In parts (a) through (c) below, refer to the previous problem. You will find the length of the line segments in problem 4-82 by substituting given values for the variables. For example, if $x$ is $3$ units in part (a) of problem 4-82, the line segment would be"
+  },
+  {
+    "id": "cc1-4-84",
+    "number": "4-84",
+    "chapter": "4",
+    "section": "4.2.4",
+    "source_type": "Review/Preview",
+    "topic": "",
+    "standards": [],
+    "tags": [],
+    "dok": "",
+    "teacher_notes": "",
+    "worksheet_defaults": {
+      "workspace": "",
+      "include_coordinate_plane": false,
+      "include_grid": false,
+      "include_number_line": false,
+      "image_size": "",
+      "alignment": ""
+    },
+    "html": "<section class=\"catalog-card-content\"><div class=\"problem-body\">\n<p>Write each fraction greater than one as a mixed number and each mixed number as a fraction greater than one.</p>\n<ol class=\"fourcol\" type=\"a\">\n<li>$5\\frac{8}{19}$</li>\n<li>$\\frac{17}{8}$</li>\n<li>$7\\frac{7}{15}$</li>\n<li>$\\frac{19}{5}$</li>\n</ol>\n</div></section>",
+    "assets": [],
+    "resources": [],
+    "text_preview": "Write each fraction greater than one as a mixed number and each mixed number as a fraction greater than one. $5\\frac{8}{19}$ $\\frac{17}{8}$ $7\\frac{7}{15}$ $\\frac{19}{5}$"
+  }
+];
